@@ -5,16 +5,16 @@
 
 	class centro_servicio{
 			//Utilizamos "now" para llamar la fecha del sistema (solo en caso de ser necesaria)
-		function Create($Id_Centro,$Id_Ciudad,$Nombre,$Direccion,$Email,$Telefono,$Estado)
+		function Create($Id_ciudad,$Nombre,$Direccion,$Email,$Telefono)
 		{
 			//Instanciamos y hacemos conexion a la base de datos(fusion_look)
 			$conexion=fusion_look_DB::Connect();
 			$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 			//Crear el query que se llevara a cabo
-			$consulta="INSERT INTO centro_servicio(Id_Centro,Id_Ciudad,Nombre,Direccion,Email,Telefono,Estado) values (?,?,?,?,?,?,?)";
+			$consulta="INSERT INTO centro_servicio(Id_ciudad,Nombre,Direccion,Email,Telefono) values (?,?,?,?,?)";
 			$query=$conexion->prepare($consulta);
-			$query->execute(array($Id_Centro,$Id_Ciudad,$Nombre,$Direccion,$Email,$Telefono,$Estado));
+			$query->execute(array($Id_ciudad,$Nombre,$Direccion,$Email,$Telefono));
 
 			fusion_look_DB::Disconnect();
 		}
@@ -25,7 +25,7 @@
 			$conexion->SetAttribute(PDO::ATTR_ERRMODE.PDO::ERRMODE_EXCEPTION);
 
 			//Crear el query que se llevara a cabo
-			$consulta="SELECT * FROM centro_servicio ORDER BY Nombre";
+			$consulta="SELECT * FROM centro_servicio ORDER BY Id_centro";
 			$query=$conexion->prepare($consulta);
 			$query->execute();
 			/* devolver el resultado en un array
@@ -37,16 +37,16 @@
 
 			fusion_look_DB::Disconnect();	
 		}
-		function ReadbyId($Id_Centro)
+		function ReadbyId($Id_centro)
 		{
 			//Instanciamos y hacemos conexion a la base de datos(fusion_look)
 			$conexion=fusion_look_DB::conect();
 			$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 			//Crear el query que se llevara a cabo
-			$consulta="SELECT * FROM centro_servicio WHERE Id_Centro=?";
+			$consulta="SELECT * FROM centro_servicio WHERE Id_centro=?";
 			$query=$conexion->prepare($consulta);
-			$query->execute(array($Id_Centro));
+			$query->execute(array($Id_centro));
 			/* devolver el resultado en un array
 				Fetch: es el resultado que arroja la consulta en forma de vector o matriz
 				segun sea el caso, para consultas donde arroja mas de un dato. el Fetch debe ir acompañado con la palabra ALL.
@@ -75,32 +75,32 @@
 
 			fusion_look_DB::Disconnect();
 		}
-		function Update($Id_Ciudad,$Nombre,$Direccion,$Email,$Telefono,$Estado)
+		function Update($Id_ciudad,$Nombre,$Direccion,$Email,$Telefono)
 		{
 			//Instanciamos y hacemos conexion a la base de datos(fusion_look)
 			$conexion=fusion_look_DB::conect();
 			$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 			//Crear el query que se llevara a cabo
-			$consulta="UPDATE centro_servicio SET Id_Ciudad=?,Nombre=?,Direccion=?,Email=?,Telefono=?,Estado=? WHERE Id_Centro=?";
+			$consulta="UPDATE centro_servicio SET Id_ciudad=?,Nombre=?,Direccion=?,Email=?,Telefono=? WHERE Id_centro=?";
 			$query=$conexion->prepare($consulta);
-			$query->execute(array($Id_Ciudad,$Nombre,$Direccion,$Email,$Telefono,$Estado));
+			$query->execute(array($Id_ciudad,$Nombre,$Direccion,$Email,$Telefono,));
 
 			fusion_look_DB::Disconnect();
 		}
-		function Delete($Id_Centro)
+		/*function Delete(Id_centro)
 		{
 			//Instanciamos y hacemos conexion a la base de datos(fusion_look)
 			$conexion=fusion_look_DB::conect();
 			$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 			//Crear el query que se llevara a cabo
-			$consulta="DELETE FROM centro_Servicio WHERE Id_Centro=?";
+			$consulta="DELETE FROM centro_servicio WHERE Id_centro=?";
 			$query=$conexion->prepare($consulta);
-			$query->execute(array($Id_Centro));
+			$query->execute(array($Id_centro));
 
 			fusion_look_DB::Disconnect();
-		}
+		}*/
 		
 	}
 ?>

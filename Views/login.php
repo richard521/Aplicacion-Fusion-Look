@@ -21,19 +21,19 @@
 					<h3>Iniciar sesión</h3>
 						<article>
 							<div class="input-field col s12">
-								<input type="text" name="Email" class="validate" required>
-								<label for="Email">Correo electronico</label>
+								<input type="text" name="Email_usuario" class="validate">
+								<label for="email_usuario" color="red">Correo electronico</label>
 							</div>
 							<div class="input-field col s12">
-								<input type="password" name="Clave" class="validate" required>
-								<label for="Clave">Contraseña</label>
+								<input type="password" name="Clave" class="validate">
+								<label for="clave">Contraseña</label>
 								<p>
-									<input type="checkbox" name="Recordar" id="recordar" required value="recordar">
-									<label for="Recordar">Mantener activa la sesión.</label>
+									<input type="checkbox" name="recordar" id="recordar" required value="recordar">
+									<label for="recordar">Mantener activa la sesión.</label>
 								</p>
 								<br>
-								<button class="waves-effect waves-light btn right cyan darken-1" id="envio" name="acc" value="L">Iniciar sesión</button>
-								<a href="registro_usuario.php" class="waves-effect waves-light btn right red darken-1" id="cancelar">Registrate</a>
+								<button class="waves-effect waves-light btn right cyan darken-1" id="envio" name="acc" value="L" onclick="swal('<?php (@$_GET["m"]);?>')">Iniciar sesión</button>
+								<a href="usuario.php" class="waves-effect waves-light btn right red darken-1" id="cancelar">Registrate</a>
 								
 								<div class="textos">
 									<a href="#" aling="center">Olvide mi contraseña</a>

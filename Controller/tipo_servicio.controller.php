@@ -14,23 +14,23 @@
 		case 'C':
 			# Create
 			# inicializar las variables que enviara el formulario y las que se guardaran en la tabla
-			$Id_Tipo				=$_POST["Id_Tipo"];
-			$Nombre_Tipo			=$_POST["Nombre_Tipo"];
+			
+			$Nombre				=$_POST["Nombre"];
 			
 			try {
-				tipo_servicio::Create($Id_Tipo,$Nombre_Tipo);
+				tipo_servicio::Create($Nombre);
 				$mensaje="Tipo de servicio creado con exito.";
 			} catch (Exception $e){
 				$mensaje="Lo sentimos, ha ocurrido un error al momento de hacer el registro, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();	
 			}
-			header("Location: ../Views/tipo_servicio.php?msn=$mensaje");
+			header("Location: ../Views/pruebainicio.php?msn=$mensaje");
 			break;
 		case 'U':
 			# Update
 			# inicializar las variables que enviara el formulario y las que se guardaran en la tabla
-			$Nombre_Tipo		=$_POST["Nombre_Tipo"];
+			$Nombre				=$_POST["Nombre"];
 			try {
-				tipo_servicio::Update($Nombre_Tipo);
+				tipo_servicio::Update($Nombre);
 				$mensaje="Tipo de servicio actualizado con exito.";
 			} catch (Exception $e){
 				$mensaje="Lo sentimos, ha ocurrido un error al momento de actualizar el tipo de servicio, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();	
@@ -39,8 +39,10 @@
 		case 'D':
 			# Delete
 			# inicializar las variables que enviara el formulario y las que se guardaran en la tabla
+			$Id_tipo				=$_POST["Id_tipo"];
+
 			try {
-				$tipo = tipo_servicio::Delete($_REQUEST["ui"]);
+				tipo_servicio::Delete($Id_tipo,$Nombre);
 				$mensaje="Tipo de servicio eliminado con exito.(Esta accion es irreversible)";
 			} catch (Exception $e){
 				$mensaje="Lo sentimos, ha ocurrido un error al momento de eliminar el Tipo de servicio, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();	

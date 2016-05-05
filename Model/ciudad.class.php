@@ -4,16 +4,16 @@
 	#Author: Londoño Ochoa
 	
 	class ciudad{
-		function create($Id_Ciudad,$Id_Departamento,$Nombre)
+		function create($Id_departamento,$Nombre)
 		{
 			//Instanciamos y hacemos conexion a la base de datos(fusion_look)
 			$conexion=fusion_look_DB::Connect();
 			$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 			//Crear el query que se llevara a cabo
-			$consulta="INSERT INTO ciudad(Id_Ciudad,Id_Departamento,Nombre) values (?,?,?)";
+			$consulta="INSERT INTO ciudad(Id_departamento,Nombre) values (?,?)";
 			$query=$conexion->prepare($consulta);
-			$query->execute(array($Id_Ciudad,$Id_Departamento,$Nombre));
+			$query->execute(array($Id_departamento,$Nombre));
 
 			fusion_look_DB::Disconnect();
 		}
@@ -36,29 +36,29 @@
 
 			fusion_look_DB::Disconnect();
 		}
-		function Update($Id_Departamento,$Nombre)
+		function Update($Id_departamento,$Nombre)
 		{
 			//Instanciamos y hacemos conexion a la base de datos(fusion_look)
 			$conexion=fusion_look_DB::conect();
 			$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 			//Crear el query que se llevara a cabo
-			$consulta="UPDATE ciudad SET Id_Departamento=?,Nombre=?  WHERE Id_Ciudad=?";
+			$consulta="UPDATE ciudad SET Id_departamento=?,Nombre=? WHERE Id_ciudad=?";
 			$query=$conexion->prepare($consulta);
-			$query->execute(array($Id_Departamento,$Nombre));
+			$query->execute(array($Id_departamento,$Nombre));
 
 			fusion_look_DB::Disconnect();
 		}
-		function Delete($Id_Ciudad)
+		function Delete($Id_ciudad)
 		{
 			//Instanciamos y hacemos conexion a la base de datos(fusion_look)
 			$conexion=fusion_look_DB::conect();
 			$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 			//Crear el query que se llevara a cabo
-			$consulta="DELETE FROM ciudad WHERE Id_Ciudad=?";
+			$consulta="DELETE FROM ciudad WHERE Id_ciudad=?";
 			$query=$conexion->prepare($consulta);
-			$query->execute(array($Id_Ciudad));
+			$query->execute(array($Id_ciudad));
 
 			fusion_look_DB::Disconnect();
 		}

@@ -4,16 +4,16 @@
 	#Author: Londoño Ochoa
 	
 	class servicio{
-		function create($Id_Servicio,$Id_Centro,$Id_Tipo,$Nombre)
+		function create($Id_centro,$Id_tipo,$Nombre)
 		{
 			//Instanciamos y hacemos conexion a la base de datos(fusion_look)
 			$conexion=fusion_look_DB::Connect();
 			$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 			//Crear el query que se llevara a cabo
-			$consulta="INSERT INTO servicio(Id_Servicio,Id_Centro,Id_Tipo,Nombre) values (?,?,?,?)";
+			$consulta="INSERT INTO servicio(Id_centro,Id_tipo,Nombre) values (?,?,?)";
 			$query=$conexion->prepare($consulta);
-			$query->execute(array($Id_Servicio,$Id_Centro,$Id_Tipo,$Nombre));
+			$query->execute(array($Id_centro,$Id_tipo,$Nombre));
 
 			fusion_look_DB::Disconnect();
 		}
@@ -21,10 +21,10 @@
 		{
 			//Instanciamos y hacemos conexion a la base de datos(fusion_look)
 			$conexion=fusion_look_DB::Connect();
-			$conexion->SetAttribute(PDO::ATTR_ERRMODE.PDO::ERRMODE_EXCEPTION);
+			$conexion->SetAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 			//Crear el query que se llevara a cabo
-			$consulta="SELECT * FROM servicio ORDER BY Id_Servicio";
+			$consulta="SELECT * FROM servicio ORDER BY Id_servicio";
 			$query=$conexion->prepare($consulta);
 			$query->execute();
 			/* devolver el resultado en un array
@@ -36,29 +36,29 @@
 
 			fusion_look_DB::Disconnect();
 		}
-		function Update($Nombre)
+		function Update($Id_centro,$Id_tipo,$Nombre)
 		{
 			//Instanciamos y hacemos conexion a la base de datos(fusion_look)
 			$conexion=fusion_look_DB::conect();
 			$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 			//Crear el query que se llevara a cabo
-			$consulta="UPDATE servicio SET Nombre=? WHERE Id_Servicio=?";
+			$consulta="UPDATE servicio SET Id_centro=?,Id_tipo=?,Nombre=? WHERE Id_servicio=?";
 			$query=$conexion->prepare($consulta);
-			$query->execute(array($Nombre));
+			$query->execute(array($Id_centro,$Id_tipo,$Nombre));
 
 			fusion_look_DB::Disconnect();
 		}
-		function Delete($Id_Servicio)
+		function Delete($Id_servicio)
 		{
 			//Instanciamos y hacemos conexion a la base de datos(fusion_look)
 			$conexion=fusion_look_DB::conect();
 			$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 			//Crear el query que se llevara a cabo
-			$consulta="DELETE FROM servicio WHERE Id_Servicio=?";
+			$consulta="DELETE FROM servicio WHERE Id_servicio=?";
 			$query=$conexion->prepare($consulta);
-			$query->execute(array($Id_Servico));
+			$query->execute(array($Id_servico));
 
 			fusion_look_DB::Disconnect();
 		}

@@ -4,16 +4,16 @@
 	#Author: Londoño Ochoa
 	
 	class tipo_servicio{
-		function create($Id_Tipo,$Nombre_Tipo)
+		function create($Nombre)
 		{
 			//Instanciamos y hacemos conexion a la base de datos(fusion_look)
 			$conexion=fusion_look_DB::Connect();
 			$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 			//Crear el query que se llevara a cabo
-			$consulta="INSERT INTO tipo_servicio(Id_Tipo,Nombre_Tipo) values (?,?)";
+			$consulta="INSERT INTO tipo_servicio(Nombre) values (?)";
 			$query=$conexion->prepare($consulta);
-			$query->execute(array($Id_Tipo,$Nombre_Tipo));
+			$query->execute(array($Nombre));
 
 			fusion_look_DB::Disconnect();
 		}
@@ -24,7 +24,7 @@
 			$conexion->SetAttribute(PDO::ATTR_ERRMODE.PDO::ERRMODE_EXCEPTION);
 
 			//Crear el query que se llevara a cabo
-			$consulta="SELECT * FROM tipo_servicio ORDER BY Id_Tipo";
+			$consulta="SELECT * FROM tipo_servicio ORDER BY Id_tipo";
 			$query=$conexion->prepare($consulta);
 			$query->execute();
 			/* devolver el resultado en un array
@@ -36,29 +36,29 @@
 
 			fusion_look_DB::Disconnect();
 		}
-		function Update($Nombre_Tipo)
+		function Update($Nombre)
 		{
 			//Instanciamos y hacemos conexion a la base de datos(fusion_look)
 			$conexion=fusion_look_DB::conect();
 			$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 			//Crear el query que se llevara a cabo
-			$consulta="UPDATE tipo_servicio SET Nombre_Tipo=? WHERE Id_Tipo=?";
+			$consulta="UPDATE tipo_servicio SET Nombre=? WHERE Id_tipo=?";
 			$query=$conexion->prepare($consulta);
-			$query->execute(array($Nombre_Tipo));
+			$query->execute(array($Nombre));
 
 			fusion_look_DB::Disconnect();
 		}
-		function Delete($Id_Tipo)
+		function Delete($Id_tipo)
 		{
 			//Instanciamos y hacemos conexion a la base de datos(fusion_look)
 			$conexion=fusion_look_DB::conect();
 			$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 			//Crear el query que se llevara a cabo
-			$consulta="DELETE FROM tipo_servicio WHERE Id_Tipo=?";
+			$consulta="DELETE FROM tipo_servicio WHERE Id_tipo=?";
 			$query=$conexion->prepare($consulta);
-			$query->execute(array($Id_Tipo));
+			$query->execute(array($Id_tipo));
 
 			fusion_look_DB::Disconnect();
 		}

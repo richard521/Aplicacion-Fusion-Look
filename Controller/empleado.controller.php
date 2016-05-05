@@ -1,5 +1,5 @@
 <?php
-	# -> Controller: usuario
+	# -> Controller: empleado
 	#Author: Londoño Ochoa
 	session_start();
 	//hacemos conexion a la base de datos(fusion_look)
@@ -11,41 +11,49 @@
 
 	$accion=$_REQUEST["acc"];
 	switch ($accion) {
-
 		case 'C':
 			# Create
 			# inicializar las variables que enviara el formulario y las que se guardaran en la tabla
+			$Id_usuario 				=$_POST["Id_usuario"];
+			$Id_centro					=$_POST["Id_centro"];
+			$Id_servicio 				=$_POST["Id_servicio"];
+			$Cargo						=$_POST["Cargo"];
+			$Disponibilidad 			=$_POST["Disponibilidad"];
 			
 			try {
-				empleado::Create($Id_Empleado,$Id_Usuario,$Id_Centro,$Cargo,$Disponibilidad);
+				empleado::Create($Id_usuario,$Id_centro,$Id_servicio,$Cargo,$Disponibilidad);
 				$mensaje="Empleado creado con exito.";
 			} catch (Exception $e){
 				$mensaje="Lo sentimos, ha ocurrido un error al momento de hacer el registro, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();	
 			}
-			header("Location: ../Views/inicio.php?msn=$mensaje");
+			header("Location: ../Views/empleado.php?msn=$mensaje");
 			break;
-
-
 		case 'U':
 			# Update
 			# inicializar las variables que enviara el formulario y las que se guardaran en la tabla
-			
+			$Id_centro					=$_POST["Id_centro"];
+			$Id_servicio 				=$_POST["Id_servicio"];
+			$Cargo						=$_POST["Cargo"];
+			$Disponibilidad 			=$_POST["Disponibilidad"];
 			try {
-				empleado::Update($Id_Centro,$Cargo,$Disponibilidad);
+				empleado::Update($Id_centro,$Id_servicio,$Cargo,$Disponibilidad);
 				$mensaje="Empleado actualizado con exito.";
 			} catch (Exception $e){
 				$mensaje="Lo sentimos, ha ocurrido un error al momento de actualizar el empleado, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();	
 			}
 			break;
-
 		case 'D':
-			# Delete			
+			# Delete
+			# inicializar las variables que enviara el formulario y las que se guardaran en la tabla
+			$Id_empleado			=$_POST["Id_empleado"];
+
 			try {
-				$emple = empleado::Delete($_REQUEST["ui"]);
+				empleado::Delete($Id_empleado,$Id_usuario,$Id_centro,$Id_servicio,$Cargo,$Disponibilidad);
 				$mensaje="Empleado eliminado con exito.(Esta accion es irreversible)";
 			} catch (Exception $e){
 				$mensaje="Lo sentimos, ha ocurrido un error al momento de eliminar el empleado, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();	
 			}
 			break;
+		
 	}
 ?>

@@ -5,7 +5,7 @@
 	class fusion_look_DB{
 
 		private static $db_host="localhost";
-		private static $db_name="final_fusion_look";
+		private static $db_name="fusion-look";
 		private static $db_user ="root";
 		private static $db_pass ="";
 		private static $conn= null;

@@ -4,16 +4,16 @@
 	#Author: Londoño Ochoa
 	
 	class departamento{
-		function create($Id_Departamento,$Nombre)
+		function create($Nombre)
 		{
 			//Instanciamos y hacemos conexion a la base de datos(fusion_look)
 			$conexion=fusion_look_DB::Connect();
 			$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 			//Crear el query que se llevara a cabo
-			$consulta="INSERT INTO departamento(Id_Departamento,Nombre) values (?,?)";
+			$consulta="INSERT INTO departamento(Nombre) values (?)";
 			$query=$conexion->prepare($consulta);
-			$query->execute(array($Id_Departamento,$Nombre));
+			$query->execute(array($Nombre));
 
 			fusion_look_DB::Disconnect();
 		}
@@ -43,22 +43,22 @@
 			$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 			//Crear el query que se llevara a cabo
-			$consulta="UPDATE departamento SET Nombre=? WHERE Id_Departamento=?";
+			$consulta="UPDATE departamento SET Nombre=?WHERE Id_departamento=?";
 			$query=$conexion->prepare($consulta);
 			$query->execute(array($Nombre));
 
 			fusion_look_DB::Disconnect();
 		}
-		function Delete($Id_Departamento)
+		function Delete($Id_departamento)
 		{
 			//Instanciamos y hacemos conexion a la base de datos(fusion_look)
 			$conexion=fusion_look_DB::conect();
 			$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 			//Crear el query que se llevara a cabo
-			$consulta="DELETE FROM departamento WHERE Id_Departamento=?";
+			$consulta="DELETE FROM departamento WHERE Id_departamento=?";
 			$query=$conexion->prepare($consulta);
-			$query->execute(array($Id_Departamento));
+			$query->execute(array($Id_departamento));
 
 			fusion_look_DB::Disconnect();
 		}

@@ -1,7 +1,7 @@
 <?php 
 	# -> Controller: ciudad
 	# -> Author: Londoño Ochoa
-	session_start();
+
 	//Hacemos conexion a la base de datos
 	require_once("../Model/dbconn.php");
 	//Traemos las clases necesarias
@@ -14,11 +14,10 @@
 		case 'C':
 			# Create
 			# inicializamos las variables que enviara el formulario y las que se guardaran en la tabla
-			$Id_Ciudad 				=$_POST["Id_Ciudad"];
-			$Id_Departamento 		=$_POST["Id_Departamento"];
+			$Id_departamento 		=$_POST["Id_departamento"];
 			$Nombre 				=$_POST["Nombre"];
 			try{
-				ciudad::Create($Id_Ciudad,$Id_Departamento,$Nombre);
+				ciudad::Create($Id_departamento,$Nombre);
 				$mensaje="Ciudad registrada con exito.";
 			}catch(Exception $e){
 				$mensaje="Lo sentimos, ha ocurrido un error al momento de hacer el registro, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();
@@ -27,10 +26,10 @@
 		case 'U':
 			# Update
 			# inicializamos las variables que enviara el formulario y las que se guardaran en la tabla
-			$Id_Departamento 		=$_POST["Id_Departamento"];
-			$Nombre					=$_POST["Nombre"];
+			$Id_departamento 		=$_POST["Id_departamento"];
+			$Nombre 				=$_POST["Nombre"];
 			try{
-				ciudad::Update($Id_Departamento,$Nombre);
+				ciudad::Update($Id_departamento,$Nombre);
 				$mensaje="Ciudad actualizada con exito.";
 			}catch(Exception $e){
 				$mensaje="Lo sentimos, ha ocurrido un error al momento de actualizar la ciudad, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();
@@ -39,13 +38,14 @@
 		case 'D':
 			# Delete
 			# inicializamos las variables que enviara el formulario y las que se guardaran en la tabla
+			$Id_ciudad 				=$_POST["Id_ciudad"];
 			try{
-				$ciu = ciudad::Delete($_REQUEST["ui"]);
+				ciudad::Delete($Id_ciudad,$Id_departamento,$Nombre);
 				$mensaje="Ciudad eliminada con exito.(Esta accion es irreversible)";
 			}catch(Exception $e){
 				$mensaje="Lo sentimos, ha ocurrido un error al momento de eliminar la ciudad, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();
 			}
 			break;
 	}
-	//header("Location: ../Views/inicio.php?msn=$mensaje");
+	header("Location: ../Views/ciudad.php?msn=$mensaje");
 ?>

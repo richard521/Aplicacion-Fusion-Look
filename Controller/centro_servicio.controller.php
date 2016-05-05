@@ -1,7 +1,7 @@
 <?php
 	# -> Controller: centro_servicio
 	#Author: Londoño Ochoa
-	session_start();
+
 	//hacemos conexion a la base de datos(fusion_look)
 	require_once("../Model/dbconn.php");
 	//traemos las clases necesarias
@@ -14,16 +14,14 @@
 		case 'C':
 			# Create
 			# inicializar las variables que enviara el formulario y las que se guardaran en la tabla
-			$Id_Centro 				=$_POST["Id_Centro"];
-			$Id_Ciudad				=$_POST["Id_Ciudad"];
+			$Id_ciudad				=$_POST["Id_ciudad"];
 			$Nombre					=$_POST["Nombre"];
 			$Direccion				=$_POST["Direccion"];
 			$Email					=$_POST["Email"];
 			$Telefono				=$_POST["Telefono"];
-			$Estado					=$_POST["Estado"];
 			
 			try {
-				centro_servicio::Create($Id_Centro,$Id_Ciudad,$Nombre,$Direccion,$Email,$Telefono,$Estado);
+				centro_servicio::Create($Id_ciudad,$Nombre,$Direccion,$Email,$Telefono);
 				$mensaje="Centro de servicio registrado con exito.";
 			} catch (Exception $e){
 				$mensaje="Lo sentimos, ha ocurrido un error al momento de hacer el registro, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();	
@@ -32,14 +30,13 @@
 		case 'U':
 			# Update
 			# inicializar las variables que enviara el formulario y las que se guardaran en la tabla
-			$Id_Ciudad				=$_POST["Id_Ciudad"];
+			$Id_ciudad				=$_POST["Id_ciudad"];
 			$Nombre					=$_POST["Nombre"];
 			$Direccion				=$_POST["Direccion"];
 			$Email					=$_POST["Email"];
 			$Telefono				=$_POST["Telefono"];
-			$Estado					=$_POST["Estado"];
 			try {
-				centro_servicio::Update($Id_Ciudad,$Nombre,$Direccion,$Email,$Telefono,$Estado);
+				centro_servicio::Update($Id_ciudad,$Nombre,$Direccion,$Email,$Telefono);
 				$mensaje="Centro de servicio actualizado con exito.";
 			} catch (Exception $e){
 				$mensaje="Lo sentimos, ha ocurrido un error al momento de actualizar el usuario, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();	
@@ -48,13 +45,15 @@
 		case 'D':
 			# Delete
 			# inicializar las variables que enviara el formulario y las que se guardaran en la tabla
+			$Id_centro 				=$_POST["Id_centro"];
+
 			try {
-				$centro = centro_servicio::Delete($_REQUEST["ui"]);
+				centro_servicio::Delete($Id_centro,$Id_ciudad,$Nombre,$Direccion,$Email,$Telefono);
 				$mensaje="Centro de servicio eliminado con exito.(Esta accion es irreversible)";
 			} catch (Exception $e){
 				$mensaje="Lo sentimos, ha ocurrido un error al momento de eliminar el usuario, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();	
 			}
 			break;
 	}
-	//header("Location: ../Views/centro_servicio.php?msn=$mensaje");
+	header("Location: ../Views/centro_servicio.php?msn=$mensaje");
 ?>
