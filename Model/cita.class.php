@@ -21,10 +21,10 @@
 		{
 			//Instanciamos y hacemos conexion a la base de datos(fusion_look)
 			$conexion=fusion_look_DB::Connect();
-			$conexion->SetAttribute(PDO::ATTR_ERRMODE.PDO::ERRMODE_EXCEPTION);
+			$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 			//Crear el query que se llevara a cabo
-			$consulta="SELECT * FROM cita ORDER BY Fecha_cita";
+			$consulta="SELECT * FROM cita";
 			$query=$conexion->prepare($consulta);
 			$query->execute();
 			/* 
@@ -37,23 +37,42 @@
 
 			fusion_look_DB::Disconnect();
 		}
-		function Update($Id_empleado,$Fecha_cita)
+		function ReadbyId($Id_cita)
 		{
 			//Instanciamos y hacemos conexion a la base de datos(fusion_look)
-			$conexion=fusion_look_DB::conect();
+			$conexion=fusion_look_DB::connect();
 			$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 			//Crear el query que se llevara a cabo
-			$consulta="UPDATE cita_usuario SET Fecha_cita=?,Estado_cita=? WHERE Id_cita=?";
+			$consulta="SELECT * FROM cita WHERE Id_cita=?";
 			$query=$conexion->prepare($consulta);
-			$query->execute(array($Fecha_cita,$Estado_cita));
+			$query->execute(array($Id_cita));
+			/* devolver el resultado en un array
+				Fetch: es el resultado que arroja la consulta en forma de vector o matriz
+				segun sea el caso, para consultas donde arroja mas de un dato. el Fetch debe ir acompañado con la palabra ALL.
+			*/
+			$resultado=$query->fetch(PDO::FETCH_BOTH);
+			return $resultado;
+
+			fusion_look_DB::Disconnect();
+		}
+		function Update($Id_empleado,$Fecha_cita,$Id_cita,$Id_usuario)
+		{
+			//Instanciamos y hacemos conexion a la base de datos(fusion_look)
+			$conexion=fusion_look_DB::connect();
+			$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+
+			//Crear el query que se llevara a cabo
+			$consulta="UPDATE cita SET Id_usuario=?,Id_empleado=?,Fecha_cita=? WHERE Id_cita=?";
+			$query=$conexion->prepare($consulta);
+			$query->execute(array($Id_empleado,$Fecha_cita,$Id_cita,$Id_usuario));
 
 			fusion_look_DB::Disconnect();
 		}
 		function Delete($Id_cita)
 		{
 			//Instanciamos y hacemos conexion a la base de datos(fusion_look)
-			$conexion=fusion_look_DB::conect();
+			$conexion=fusion_look_DB::connect();
 			$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 			//Crear el query que se llevara a cabo

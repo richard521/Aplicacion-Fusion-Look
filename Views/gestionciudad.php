@@ -8,7 +8,7 @@
 		header("Location: ../Views/login.php?m=".$mensaje."&t=".$tipo_mensaje);
 	}
   require_once("../Model/dbconn.php");
-	require_once("../Model/usuario.class.php");
+	require_once("../Model/ciudad.class.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,41 +35,29 @@
     </script>
     </head>
   	<body>
-    <h1>Gestion de usuarios</h1>
+    <h1>Gestion de ciudades</h1>
     <table id="datatable" class="display">
       <thead>
         <tr>
           <th>Codigo</th>
+          <th>Departamento</th>
           <th>Nombre</th>
-          <th>Apellido</th>
-          <th>Clave</th>
-          <th>Correo electronico</th>
-          <th>Telefono</th>
-          <th>Sexo</th>
-          <th>Estado</th>
-          <th>Tipo de usuario</th>
           <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
       <?php
 
-      $usuario = usuario::ReadAll();
-      foreach ($usuario as $row) {    
+      $ciudad = ciudad::ReadAll();
+      foreach ($ciudad as $row) {    
       echo "<tr>
-                <td>".$row["Id_usuario"]."</td>
+                <td>".$row["Id_ciudad"]."</td>
+                <td>".$row["Id_departamento"]."</td>
                 <td>".$row["Nombre"]."</td>
-                <td>".$row["Apellido"]."</td>
-                <td>".$row["Clave"]."</td>
-                <td>".$row["Email"]."</td>
-                <td>".$row["Telefono"]."</td>
-                <td>".$row["Sexo"]."</td>
-                <td>".$row["Estado"]."</td>
-                <td>".$row["Tipo_usuario"]."</td>
                 <td>
 
-                  <a href='editarusuario.php?ui=".($row["Id_usuario"])."'><i class='small material-icons'>mode_edit</i></a>
-                  <a href='../Controller/usuario.controller.php?ui=".($row["Id_usuario"])."&acc=D'><i class='small material-icons'>delete</i></a>
+                  <a href='editarciudad.php?cui=".($row["Id_ciudad"])."'><i class='small material-icons'>mode_edit</i></a>
+                  <a href='../Controller/ciudad.controller.php?ui=".($row["Id_ciudad"])."&acc=D'><i class='small material-icons'>delete</i></a>
 
 
                 </td>

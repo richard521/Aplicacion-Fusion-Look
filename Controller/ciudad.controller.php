@@ -26,10 +26,11 @@
 		case 'U':
 			# Update
 			# inicializamos las variables que enviara el formulario y las que se guardaran en la tabla
+			$Id_ciudad				=$_POST["Id_ciudad"];
 			$Id_departamento 		=$_POST["Id_departamento"];
 			$Nombre 				=$_POST["Nombre"];
 			try{
-				ciudad::Update($Id_departamento,$Nombre);
+				ciudad::Update($Id_departamento,$Nombre,$Id_ciudad);
 				$mensaje="Ciudad actualizada con exito.";
 			}catch(Exception $e){
 				$mensaje="Lo sentimos, ha ocurrido un error al momento de actualizar la ciudad, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();
@@ -38,9 +39,8 @@
 		case 'D':
 			# Delete
 			# inicializamos las variables que enviara el formulario y las que se guardaran en la tabla
-			$Id_ciudad 				=$_POST["Id_ciudad"];
 			try{
-				ciudad::Delete($Id_ciudad,$Id_departamento,$Nombre);
+				$ciudad = ciudad::Delete($Id_ciudad,$Id_departamento,$Nombre);
 				$mensaje="Ciudad eliminada con exito.(Esta accion es irreversible)";
 			}catch(Exception $e){
 				$mensaje="Lo sentimos, ha ocurrido un error al momento de eliminar la ciudad, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();

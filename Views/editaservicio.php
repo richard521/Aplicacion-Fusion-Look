@@ -9,7 +9,7 @@
   }
   require_once("../Model/dbconn.php");
   require_once("../Model/servicio.class.php");
-  $servicio = servicio::ReadAll($_REQUEST["si"]);
+  $servicio = servicio::ReadbyId($_REQUEST["si"]);
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,12 +35,12 @@
 <body>
   <section >
     <div class="row">
-      <form class="col s12">
+      <form action="../Controller/servicio.controller.php" method="POST" class="col s12">
         <div class="row">
           <h3>Actualizar servicio</h3>
             <article>
               <div class="input-field col s12">
-                <input type="number" name="Id_servicio" class="validate" value="<?php echo $servicio[0] ?>" >
+                <input type="number" name="Id_servicio" class="validate" value="<?php echo $servicio[0] ?>" readonly>
                 <label for="Id_servicio">Id servicio</label>
               </div>
               <div class="input-field col s12">
@@ -57,7 +57,7 @@
               </div>
                 <br>
                 <a href="gestionservicios.php" class="waves-effect waves-light btn red darken-1 left tooltipped" data-tooltip="Volver" data-position="top">Cancelar</a>
-                <button class="waves-effect waves-light  btn right cyan darken-1 tooltipped" data-tooltip="Modificar" data-position="top">Enviar</button>
+                <button class="waves-effect waves-light  btn right cyan darken-1 tooltipped" name="acc" value="U" data-tooltip="Modificar" data-position="top">Enviar</button>
               </div>
             </article>
         

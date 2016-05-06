@@ -62,8 +62,8 @@
                 <td>".$row["Nombre"]."</td>
                 <td>
 
-                  <a href='editarservicio.php?si=".($row["Id_servicio"])."'><i class='small material-icons'>mode_edit</i></a>
-                  <a href='../Controller/servicio.controller.php?si=".($row["Id_servicio"])."&acc=D'><i class='small material-icons'>thumb_down</i></a>
+                  <a href='editaservicio.php?si=".($row["Id_servicio"])."'><i class='small material-icons'>mode_edit</i></a>
+                  <a href='../Controller/servicio.controller.php?si=".($row["Id_servicio"])."&acc=D'><i class='small material-icons'>delete</i></a>
 
 
                 </td>

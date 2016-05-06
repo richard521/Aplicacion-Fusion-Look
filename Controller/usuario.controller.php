@@ -46,6 +46,7 @@
 			try {
 				usuario::Update($Nombre,$Apellido,$Clave,$Email,$Telefono,$Sexo,$Estado,$Id_usuario);
 				$mensaje="Usuario actualizado con exito.";
+				header("Location: ../Views/gestion.php?msn=$mensaje");
 			} catch (Exception $e){
 				$mensaje="Lo sentimos, ha ocurrido un error al momento de actualizar el usuario, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();	
 			}

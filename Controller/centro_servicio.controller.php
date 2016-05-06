@@ -30,13 +30,14 @@
 		case 'U':
 			# Update
 			# inicializar las variables que enviara el formulario y las que se guardaran en la tabla
+			$Id_centro				=$_POST["Id_centro"];
 			$Id_ciudad				=$_POST["Id_ciudad"];
 			$Nombre					=$_POST["Nombre"];
 			$Direccion				=$_POST["Direccion"];
 			$Email					=$_POST["Email"];
 			$Telefono				=$_POST["Telefono"];
 			try {
-				centro_servicio::Update($Id_ciudad,$Nombre,$Direccion,$Email,$Telefono);
+				centro_servicio::Update($Id_ciudad,$Nombre,$Direccion,$Email,$Telefono,$Id_centro);
 				$mensaje="Centro de servicio actualizado con exito.";
 			} catch (Exception $e){
 				$mensaje="Lo sentimos, ha ocurrido un error al momento de actualizar el usuario, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();	

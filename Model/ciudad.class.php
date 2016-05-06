@@ -36,23 +36,42 @@
 
 			fusion_look_DB::Disconnect();
 		}
-		function Update($Id_departamento,$Nombre)
+		function ReadbyId($Id_ciudad)
 		{
 			//Instanciamos y hacemos conexion a la base de datos(fusion_look)
-			$conexion=fusion_look_DB::conect();
+			$conexion=fusion_look_DB::connect();
+			$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+
+			//Crear el query que se llevara a cabo
+			$consulta="SELECT * FROM ciudad";
+			$query=$conexion->prepare($consulta);
+			$query->execute(array($Id_ciudad));
+			/* devolver el resultado en un array
+				Fetch: es el resultado que arroja la consulta en forma de vector o matriz
+				segun sea el caso, para consultas donde arroja mas de un dato. el Fetch debe ir acompañado con la palabra ALL.
+			*/
+			$resultado=$query->fetch(PDO::FETCH_BOTH);
+			return $resultado;
+
+			fusion_look_DB::Disconnect();
+		}
+		function Update($Id_departamento,$Nombre,$Id_ciudad)
+		{
+			//Instanciamos y hacemos conexion a la base de datos(fusion_look)
+			$conexion=fusion_look_DB::connect();
 			$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 			//Crear el query que se llevara a cabo
 			$consulta="UPDATE ciudad SET Id_departamento=?,Nombre=? WHERE Id_ciudad=?";
 			$query=$conexion->prepare($consulta);
-			$query->execute(array($Id_departamento,$Nombre));
+			$query->execute(array($Id_departamento,$Nombre,$Id_ciudad));
 
 			fusion_look_DB::Disconnect();
 		}
 		function Delete($Id_ciudad)
 		{
 			//Instanciamos y hacemos conexion a la base de datos(fusion_look)
-			$conexion=fusion_look_DB::conect();
+			$conexion=fusion_look_DB::connect();
 			$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 			//Crear el query que se llevara a cabo

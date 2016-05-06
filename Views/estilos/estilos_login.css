@@ -10,6 +10,7 @@ section{
 	display: inline-block;
 	margin: auto;
 	background-color: #fafafa;
+	border-radius: 5px;
 }
 
 .textos{
@@ -20,9 +21,10 @@ h3{
 	text-align: center;
 }
 #titulo{
-	font-family: "Cookies&milk";
+	font-family: 'Poiret One';
 	font-size: 100px;
 	margin-top: 50px;
+	margin-bottom: 50px;
 	color: white;
 }
 

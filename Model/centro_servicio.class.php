@@ -22,10 +22,10 @@
 		{
 			//Instanciamos y hacemos conexion a la base de datos(fusion_look)
 			$conexion=fusion_look_DB::Connect();
-			$conexion->SetAttribute(PDO::ATTR_ERRMODE.PDO::ERRMODE_EXCEPTION);
+			$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 			//Crear el query que se llevara a cabo
-			$consulta="SELECT * FROM centro_servicio ORDER BY Id_centro";
+			$consulta="SELECT * FROM centro_servicio";
 			$query=$conexion->prepare($consulta);
 			$query->execute();
 			/* devolver el resultado en un array
@@ -40,7 +40,7 @@
 		function ReadbyId($Id_centro)
 		{
 			//Instanciamos y hacemos conexion a la base de datos(fusion_look)
-			$conexion=fusion_look_DB::conect();
+			$conexion=fusion_look_DB::Connect();
 			$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 			//Crear el query que se llevara a cabo
@@ -59,7 +59,7 @@
 		function Readbyname($Nombre)
 		{
 			//Instanciamos y hacemos conexion a la base de datos(fusion_look)
-			$conexion=fusion_look_DB::conect();
+			$conexion=fusion_look_DB::Connect();
 			$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 			//Crear el query que se llevara a cabo
@@ -75,23 +75,23 @@
 
 			fusion_look_DB::Disconnect();
 		}
-		function Update($Id_ciudad,$Nombre,$Direccion,$Email,$Telefono)
+		function Update($Id_ciudad,$Nombre,$Direccion,$Email,$Telefono,$Id_centro)
 		{
 			//Instanciamos y hacemos conexion a la base de datos(fusion_look)
-			$conexion=fusion_look_DB::conect();
+			$conexion=fusion_look_DB::Connect();
 			$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 			//Crear el query que se llevara a cabo
 			$consulta="UPDATE centro_servicio SET Id_ciudad=?,Nombre=?,Direccion=?,Email=?,Telefono=? WHERE Id_centro=?";
 			$query=$conexion->prepare($consulta);
-			$query->execute(array($Id_ciudad,$Nombre,$Direccion,$Email,$Telefono,));
+			$query->execute(array($Id_ciudad,$Nombre,$Direccion,$Email,$Telefono,$Id_centro));
 
 			fusion_look_DB::Disconnect();
 		}
-		/*function Delete(Id_centro)
+		function Delete($Id_centro)
 		{
 			//Instanciamos y hacemos conexion a la base de datos(fusion_look)
-			$conexion=fusion_look_DB::conect();
+			$conexion=fusion_look_DB::connect();
 			$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 			//Crear el query que se llevara a cabo
@@ -100,7 +100,7 @@
 			$query->execute(array($Id_centro));
 
 			fusion_look_DB::Disconnect();
-		}*/
+		}
 		
 	}
 ?>

@@ -1,8 +1,18 @@
+<?php
+	session_start();
+
+	if(isset($_SESSION["Id_usuario"])){
+		header("Location: ../Views/pruebainicio.php");
+	}
+	//preguntar uso de funcion para omitir ciertos errores
+	//error_reporting(E_ERROR | E_WARNING | E_PARSE);
+?>
 <!DOCTYPE html>
 <html>
 <head>
 	  <link rel="stylesheet" type="text/css" href="estilos/estilos_login.css">
 	  <!--Import Google Icon Font-->
+	  <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
       <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
@@ -13,7 +23,7 @@
 </head>
 <body background="images/fondo.jpg">
 
-	<h3 id="titulo">Fusion-look</h3>
+	<h3 id="titulo">Fusion-Look</h3>
 	<section>
 		<div class="row">
 			<form action="../Controller/usuario.controller.php" method="POST" class="col s12" novalidate>
