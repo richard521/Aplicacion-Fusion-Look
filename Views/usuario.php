@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="estilos/estilos_usuario.css">
+	  <link rel="stylesheet" type="text/css" href="estilos/estilos_usuario.css">
 	  <!--<link rel="stylesheet" type="text/css" href="estilos/estilos_usuario.css">-->
 	  <!--Import Google Icon Font-->
 	  <link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
@@ -11,6 +11,25 @@
       <link rel="stylesheet" type="text/css" href="sweetalert/sweetalert-master/dist/sweetalert.css">
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	  <script src="js/valida.js"></script>
+	  <script type="text/javascript">
+		function validar(e) {
+		tecla = (document.all) ? e.keyCode : e.which;
+		if (tecla==8) return true;
+		patron =/[A-Za-z\s]/;
+		te = String.fromCharCode(tecla);
+		return patron.test(te);
+		}
+	  </script>
+	  <!--<script type="text/javascript">
+		function numeros(nu) {
+		tecla = (document.all) ? e.keyCode : e.which;
+		if (tecla==8) return true;
+		ppatron = /\d/;
+		te = String.fromCharCode(tecla);
+		return patron.test(te);
+		}
+	  </script>-->
 	<title>Registro usuarios</title>
   <nav class="cyan darken-1">
     <div class="nav-wrapper">
@@ -29,32 +48,27 @@
 					<h3>Registro usuario nuevo</h3>
 						<article>
 							<div class="input-field col s12">
-    							<select name="Tipo_usuario">
-      								<option value="" disabled>Elige una opcion</option>
-      								<option value="Usuario"  selected>Usuario</option>
-      								<option disabled value="Administrador">Administrador</option>
-      								<option disabled value="Desarrollador">Desarrollador</option>
-    							</select>
-    							<label>Tipo usuario</label>
+								<input type="text" id="Tipo_usuario" name="Tipo_usuario" class="validate" value="Usuario" onkeypress="return validar(event)" readonly>
+								<label for="Tipo_usuario">Tipo de usuario</label>
   							</div>
 							<div class="input-field col s12">
-								<input type="text" name="Nombre" class="validate" required>
+								<input type="text" id="Nombre" name="Nombre" class="validate" onkeypress="return validar(event)">
 								<label for="Nombre">Nombre</label>
 							</div>
 							<div class="input-field col s12">
-								<input type="text" name="Apellido" class="validate" required>
+								<input type="text" id="Apellido" name="Apellido" class="validate" onkeypress="return validar(event)">
 								<label for="Apellido">Apellido</label>
 							</div>
 							<div class="input-field col s12">
-								<input type="password" name="Clave" class="validate" required>
+								<input type="password" id="Clave" name="Clave" class="validate">
 								<label for="Clave">Contraseña</label>
 							</div>
 							<div class="input-field col s12">
-								<input type="email" name="Email" class="validate" required>
+								<input type="text" id="Email" name="Email" class="validate">
 								<label for="Email">Correo electronico</label>
 							</div>
 							<div class="input-field col s12">
-								<input type="number" name="Telefono" class="validate" required/>
+								<input type="number" id="Telefono" name="Telefono" class="validate" onkeypress="return numeros(nu)">
 								<label for="Telefono">Telefono</label>
 							</div>
 							<div class="input-field col s12">
@@ -84,7 +98,7 @@
 									</p>
 								<br>
 								<a href="pruebahome.php" class="waves-effect waves-light btn red darken-1 left tooltipped" data-tooltip="Volver" data-position="top">Cancelar</a>
-								<button class="waves-effect waves-light  btn right cyan darken-1 tooltipped" name="acc" value="C" data-tooltip="Registrar" data-position="top">Enviar</button>
+								<button class="waves-effect waves-light  btn right cyan darken-1" name="acc" value="C" onclick="return valida()">Enviar</button>
 							</div>
 						</article>
 				

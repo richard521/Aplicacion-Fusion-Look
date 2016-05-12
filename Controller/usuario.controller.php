@@ -66,11 +66,11 @@
 		case 'L':
 			#Login
 			#inicializar las variables que enviara el formulario y las que se validaran en la tabla
-			$Email_usuario		=$_POST["Email_usuario"];
+			$Email				=$_POST["Email"];
 			$Clave				=$_POST["Clave"];
 
 			try {
-				$usuario = usuario::Login($Email_usuario,$Clave);
+				$usuario = usuario::Login($Email,$Clave);
 
 				#utilizamos el metodo count para contar la cantidad de registros que retorna la consulta
 				$usuario_existe = count($usuario[0]);
@@ -78,6 +78,7 @@
 				if($usuario_existe == 0){
 					$mensaje="Usuario o contraseña incorrectos.";
 					$tipo_mensaje="advertencia";
+					
 
 					header("Location: ../Views/login.php?m=".$mensaje."&t".$tipo_mensaje);
 				}else{

@@ -24,7 +24,7 @@
 			$conexion->SetAttribute(PDO::ATTR_ERRMODE.PDO::ERRMODE_EXCEPTION);
 
 			//Crear el query que se llevara a cabo
-			$consulta="SELECT * FROM empleado ORDER BY Id_empleado";
+			$consulta="SELECT * FROM empleado";
 			$query=$conexion->prepare($consulta);
 			$query->execute();
 			/* devolver el resultado en un array

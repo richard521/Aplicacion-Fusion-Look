@@ -1,3 +1,16 @@
+<?php
+	include ("../Model/ciudad.class.php");
+	include ("../Model/dbconn.php");
+	$ciudad = ciudad::ReadAll();
+
+	session_start();
+	if(!isset($_SESSION["Id_usuario"])){
+		$mensaje=("Debes iniciar sesion primero");
+		$tipo_mensaje=("advertencia");
+
+		header("Location: ../Views/login.php?m=".$mensaje."&t=".$tipo_mensaje);
+	}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,8 +40,14 @@
 					<h3>Registro centro nuevo</h3>
 						<article>
 							<div class="input-field col s12">
-								<input type="number" name="Id_ciudad" class="validate" required>
-								<label for="Id_ciudad">Ciudad</label>
+								<select name="Id_ciudad" >
+										<?php
+											foreach ($ciudad as $fila ) {
+												echo'<option value="'.$fila["Id_ciudad"].'">'.$fila["Nombre"].'</option>';
+											}
+										?>
+								</select>
+								<label>Ciudad</label>
 							</div>
 							<div class="input-field col s12">
 								<input type="text" name="Nombre" class="validate" required>
@@ -62,5 +81,10 @@
       <script type="text/javascript" src="js/jquery-1.12.3.js"></script>
       <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 	  <script src="sweetalert/sweetalert-master/dist/sweetalert.min.js"></script>
+	  <script type="text/javascript">
+	  	$(document).ready(function() {
+    	$('select').material_select();
+  		});
+	 </script>
 </body>
 </html>

@@ -21,7 +21,7 @@
 		{
 			//Instanciamos y hacemos conexion a la base de datos(fusion_look)
 			$conexion=fusion_look_DB::Connect();
-			$conexion->SetAttribute(PDO::ATTR_ERRMODE.PDO::ERRMODE_EXCEPTION);
+			$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 			//Crear el query que se llevara a cabo
 			$consulta="SELECT * FROM ciudad ORDER BY Nombre";

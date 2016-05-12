@@ -1,3 +1,8 @@
+<?php
+	include ("../Model/departamento.class.php");
+	include ("../Model/dbconn.php");
+	$departamento = departamento::ReadAll();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,16 +32,21 @@
 					<h3>Registro ciudad nueva</h3>
 						<article>
 							<div class="input-field col s12">
-								<input type="number" name="Id_departamento" class="validate" required>
-								<label for="Id_departamento">Departamento</label>
+								<select name="Id_departamento" >
+										<?php
+											foreach ($departamento as $fila ) {
+												echo'<option value="'.$fila["Id_departamento"].'">'.$fila["Nombre"].'</option>';
+											}
+										?>
+								</select>
+								<label>Departamento</label>
 							</div>
 							<div class="input-field col s12">
-								<input type="text" name="Nombre" class="validate" required>
+								<input type="text" name="Nombre" class="validate" length="10" required>
 								<label for="Nombre">Nombre ciudad</label>
 							</div>
-							<br>
-								<a href="pruebahome.php" class="waves-effect waves-light btn red darken-1 left tooltipped" data-tooltip="Volver" data-position="top">Cancelar</a>
-								<button class="waves-effect waves-light  btn right cyan darken-1 tooltipped" data-tooltip="Crear" data-position="top" name="acc" value="C">Enviar</button>
+							<a href="pruebahome.php" class="waves-effect waves-light btn red darken-1 left tooltipped" data-tooltip="Volver" data-position="top">Cancelar</a>
+							<button class="waves-effect waves-light  btn right cyan darken-1 tooltipped" data-tooltip="Crear" data-position="top" name="acc" value="C">Enviar</button>
 						</article>
 				
 			</form>
@@ -49,5 +59,10 @@
       <script type="text/javascript" src="js/jquery-1.12.3.js"></script>
       <script type="text/javascript" src="materialize/js/materialize.js"></script>
       <script src="sweetalert/sweetalert-master/dist/sweetalert.min.js"></script>	
+      <script type="text/javascript">
+	  	$(document).ready(function() {
+    	$('select').material_select();
+  		});
+	 </script>
 </body>
 </html>

@@ -9,7 +9,9 @@
 	}
 	require_once("../Model/dbconn.php");
 	require_once("../Model/centro_servicio.class.php");
+	include ("../Model/ciudad.class.php");
 	$centro = centro_servicio::ReadbyId($_REQUEST["ci"]);
+	$ciudad = ciudad::ReadAll();
 ?>
 <!DOCTYPE html>
 <html>
@@ -45,8 +47,17 @@
 								<label for="Id_centro">Centro de servicio</label>
 							</div>
 							<div class="input-field col s12">
-								<input type="number" name="Id_ciudad" class="validate" value="<?php echo $centro[1] ?>" >
-								<label for="Id_ciudad">Ciudad</label>
+								<!--<input type="number" name="Id_ciudad" class="validate" value="<?php echo $centro[1] ?>">
+								<label for="Id_ciudad">Ciudad</label>-->
+								<select name="Id_ciudad" >
+										<option value="<?php echo $centro[1] ?>" readonly><?php echo $centro[1] ?></option>
+										<?php
+											foreach ($ciudad as $fila ) {
+												echo'<option value="'.$fila["Id_ciudad"].'">'.$fila["Nombre"].'</option>';
+											}
+										?>
+								</select>
+								<label>Ciudad</label>
 							</div>
 							<div class="input-field col s12">
 								<input type="text" name="Nombre" class="validate" value="<?php echo $centro[2] ?>" >
@@ -80,5 +91,10 @@
       <script type="text/javascript" src="js/jquery-1.12.3.js"></script>
       <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 	  <script src="sweetalert/sweetalert-master/dist/sweetalert.min.js"></script>
+	  <script type="text/javascript">
+	  	$(document).ready(function() {
+    	$('select').material_select();
+  		});
+	 </script>
 </body>
 </html>
