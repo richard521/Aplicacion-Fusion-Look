@@ -1,7 +1,7 @@
 <?php
 	include ("../Model/departamento.class.php");
-	include ("../Model/dbconn.php");
-	$departamento = departamento::ReadAll();
+	include ("../Model/dbconn.php"); 
+	$departamento = departamento::ReadAll(); 
 ?>
 <!DOCTYPE html>
 <html>
@@ -38,6 +38,7 @@
 												echo'<option value="'.$fila["Id_departamento"].'">'.$fila["Nombre"].'</option>';
 											}
 										?>
+										
 								</select>
 								<label>Departamento</label>
 							</div>

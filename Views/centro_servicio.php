@@ -1,11 +1,18 @@
 <?php
 	include ("../Model/ciudad.class.php");
+	include ("../Model/administrador.class.php");
 	include ("../Model/dbconn.php");
 	$ciudad = ciudad::ReadAll();
-
+	$admin = administrador::ReadInner();
 	session_start();
 	if(!isset($_SESSION["Id_usuario"])){
 		$mensaje=("Debes iniciar sesion primero");
+		$tipo_mensaje=("advertencia");
+
+		header("Location: ../Views/login.php?m=".$mensaje."&t=".$tipo_mensaje);
+	}
+	if ($_SESSION["Tipo_usuario"]!== "Administrador") {
+		$mensaje=("Lo sentimos, debes ser administrador para ejecutar esta accion.");
 		$tipo_mensaje=("advertencia");
 
 		header("Location: ../Views/login.php?m=".$mensaje."&t=".$tipo_mensaje);
@@ -14,9 +21,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="estilos/estilos_usuario.css">
 	  <!--<link rel="stylesheet" type="text/css" href="estilos/estilos_usuario.css">-->
 	  <!--Import Google Icon Font-->
+	  <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
       <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
@@ -25,11 +34,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<title>Registro centros</title>
   <nav class="cyan darken-1">
-    <div class="nav-wrapper">
-      <a href="pruebahome.php" class="brand-logo" id="titulo">Fusion-Look</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-      </ul>
-    </div>
+    <?php include_once("../Model/menu.php"); ?>
   </nav>
 </head>
 <body>
@@ -39,6 +44,16 @@
 				<div class="row">
 					<h3>Registro centro nuevo</h3>
 						<article>
+							<div class="input-field col s12">
+								<select name="Id_administrador" >
+										<?php
+											foreach ($admin as $fila ) {
+												echo'<option value="'.$fila["Id_administrador"].'">'.$fila["Nombre"].'</option>';
+											}
+										?>
+								</select>
+								<label>Administrador</label>
+							</div>
 							<div class="input-field col s12">
 								<select name="Id_ciudad" >
 										<?php

@@ -7,6 +7,11 @@
 
 		header("Location: ../Views/login.php?m=".$mensaje."&t=".$tipo_mensaje);
 	}
+  if($_SESSION["Tipo_usuario"]!=="Desarrollador"){
+    $mensaje=("Solo los desarrolladores tienen acceso a este contenido");
+    $tipo_mensaje=("advertencia");
+    header("Location: editarusuario.php?m=".$mensaje."&t=".$tipo_mensaje);
+  }
   require_once("../Model/dbconn.php");
 	require_once("../Model/usuario.class.php");
 ?>
@@ -30,64 +35,56 @@
 
       <script>
     	$(document).ready( function () {
-      	$('#datatable').DataTable();
-    	});
+      	$('#datatable').DataTable({
+           "language": {               
+                     "url": "https://cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json"       
+                } 
+              })
+      }); 
     </script>
       <nav>
         <?php include_once("../Model/menu.php");?>
       </nav>
     </head>
   	<body>
-    <h1>Gestion de usuarios</h1>
-    <table id="datatable" class="display">
+    <h1>Consultar desarrolladores</h1>
+    <table id="datatable"><!-- class="display highlight responsive-table">-->
       <thead>
         <tr>
-          <th>Codigo</th>
+          <th>N° Administrador</th>
           <th>Nombre</th>
           <th>Apellido</th>
-          <th>Clave</th>
-          <th>Correo electronico</th>
+          <th>Correo Electronico</th>
           <th>Telefono</th>
           <th>Sexo</th>
-          <th>Estado</th>
-          <th>Tipo de usuario</th>
-          <th>Acciones</th>
+          <th>Perfil</th>
         </tr>
       </thead>
       <tbody>
       <?php
-
-      $usuario = usuario::ReadAll();
-      foreach ($usuario as $row) {    
+      $desarrollo = usuario::ReadbyType();
+      //$centro = centro_servicio::ReadbyIdadmin();
+      foreach ($desarrollo as $row) {    
       echo "<tr>
                 <td>".$row["Id_usuario"]."</td>
                 <td>".$row["Nombre"]."</td>
                 <td>".$row["Apellido"]."</td>
-                <td>".$row["Clave"]."</td>
                 <td>".$row["Email"]."</td>
                 <td>".$row["Telefono"]."</td>
                 <td>".$row["Sexo"]."</td>
-                <td>".$row["Estado"]."</td>
                 <td>".$row["Tipo_usuario"]."</td>
-                <td>
-
-                  <a href='editarusuario.php?ui=".($row["Id_usuario"])."'><i class='small material-icons'>mode_edit</i></a>
-                  <a href='../Controller/usuario.controller.php?ui=".($row["Id_usuario"])."&acc=D'><i class='small material-icons'>delete</i></a>
-
-
-                </td>
               </tr>";
           }
          ?>
         </tbody>
     </table>
   </body>
-  <script type="text/javascript" src="js/jquery-1.12.3.js"></script>
-  <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
-  <script type="text/javascript">
+      <script type="text/javascript" src="js/jquery-1.12.3.js"></script>
+      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+      <script type="text/javascript">
         $(document).ready(function() {
         $(".dropdown-button").dropdown();
         $(".button-collapse").sideNav();
         });
-  </script>
+      </script>
 </html>

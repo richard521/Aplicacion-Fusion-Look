@@ -50,7 +50,7 @@
 								<!--<input type="number" name="Id_ciudad" class="validate" value="<?php echo $centro[1] ?>">
 								<label for="Id_ciudad">Ciudad</label>-->
 								<select name="Id_ciudad" >
-										<option value="<?php echo $centro[1] ?>" readonly><?php echo $centro[1] ?></option>
+										<option value="<?php echo $centro[2] ?>" readonly></option>
 										<?php
 											foreach ($ciudad as $fila ) {
 												echo'<option value="'.$fila["Id_ciudad"].'">'.$fila["Nombre"].'</option>';
@@ -60,19 +60,19 @@
 								<label>Ciudad</label>
 							</div>
 							<div class="input-field col s12">
-								<input type="text" name="Nombre" class="validate" value="<?php echo $centro[2] ?>" >
+								<input type="text" name="Nombre" class="validate" value="<?php echo $centro[3] ?>" >
 								<label for="Nombre">Nombre centro</label>
 							</div>
 							<div class="input-field col s12">
-								<input type="text" name="Direccion" class="validate" value="<?php echo $centro[3] ?>" >
+								<input type="text" name="Direccion" class="validate" value="<?php echo $centro[4] ?>" >
 								<label for="Direccion">Direccion</label>
 							</div>
 							<div class="input-field col s12">
-								<input type="email" name="Email" class="validate" value="<?php echo $centro[4] ?>" >
+								<input type="email" name="Email" class="validate" value="<?php echo $centro[5] ?>" >
 								<label for="Email">Correo electronico</label>
 							</div>
 							<div class="input-field col s12">
-								<input type="number" name="Telefono" class="validate" value="<?php echo $centro[5] ?>" >
+								<input type="number" name="Telefono" class="validate" value="<?php echo $centro[6] ?>" >
 								<label for="Telefono">Telefono</label>
 							</div>
 							<br>

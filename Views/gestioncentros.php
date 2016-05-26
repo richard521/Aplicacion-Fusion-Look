@@ -30,15 +30,20 @@
 
       <script>
     	$(document).ready( function () {
-      	$('#datatable').DataTable();
-    	});
+      	$('#datatable').DataTable({
+           "language": {               
+                     "url": "https://cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json"       
+                } 
+              })
+      }); 
     </script>
     </head>
   	<body>
     <h1>Gestion centros de servicio</h1>
-    <table id="datatable" class="display">
+    <table id="datatable" class="display highlight responsive-table">
       <thead>
         <tr>
+          <th>Administrador</th>
           <th>Codigo</th>
           <th>Ciudad</th>
           <th>Nombre</th>
@@ -50,10 +55,11 @@
       </thead>
       <tbody>
       <?php
-
       $centro = centro_servicio::ReadAll();
+      //$centro = centro_servicio::ReadbyIdadmin();
       foreach ($centro as $row) {    
       echo "<tr>
+                <td>".$row["Id_administrador"]."</td>
                 <td>".$row["Id_centro"]."</td>
                 <td>".$row["Id_ciudad"]."</td>
                 <td>".$row["Nombre"]."</td>

@@ -43,7 +43,7 @@
 			$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 			//Crear el query que se llevara a cabo
-			$consulta="SELECT * FROM ciudad";
+			$consulta="SELECT * FROM ciudad where Id_ciudad=?";
 			$query=$conexion->prepare($consulta);
 			$query->execute(array($Id_ciudad));
 			/* devolver el resultado en un array

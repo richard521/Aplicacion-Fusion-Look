@@ -17,7 +17,7 @@
     <title></title>
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.css">
     <!--Import Google Icon Font-->
-	    <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+	  <!--<link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>-->
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
       <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
@@ -33,37 +33,31 @@
       	$('#datatable').DataTable();
     	});
     </script>
-      <nav>
-        <?php include_once("../Model/menu.php");?>
-      </nav>
     </head>
   	<body>
-    <h1>Gestion de usuarios</h1>
+    <h1>Consulta desarrolladores</h1>
     <table id="datatable" class="display">
       <thead>
         <tr>
           <th>Codigo</th>
           <th>Nombre</th>
           <th>Apellido</th>
-          <th>Clave</th>
           <th>Correo electronico</th>
           <th>Telefono</th>
           <th>Sexo</th>
           <th>Estado</th>
           <th>Tipo de usuario</th>
-          <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
       <?php
 
-      $usuario = usuario::ReadAll();
+      $usuario = usuario::ReadbyType("Desarrollador");
       foreach ($usuario as $row) {    
       echo "<tr>
                 <td>".$row["Id_usuario"]."</td>
                 <td>".$row["Nombre"]."</td>
                 <td>".$row["Apellido"]."</td>
-                <td>".$row["Clave"]."</td>
                 <td>".$row["Email"]."</td>
                 <td>".$row["Telefono"]."</td>
                 <td>".$row["Sexo"]."</td>
@@ -71,8 +65,7 @@
                 <td>".$row["Tipo_usuario"]."</td>
                 <td>
 
-                  <a href='editarusuario.php?ui=".($row["Id_usuario"])."'><i class='small material-icons'>mode_edit</i></a>
-                  <a href='../Controller/usuario.controller.php?ui=".($row["Id_usuario"])."&acc=D'><i class='small material-icons'>delete</i></a>
+                  
 
 
                 </td>
@@ -82,12 +75,4 @@
         </tbody>
     </table>
   </body>
-  <script type="text/javascript" src="js/jquery-1.12.3.js"></script>
-  <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
-  <script type="text/javascript">
-        $(document).ready(function() {
-        $(".dropdown-button").dropdown();
-        $(".button-collapse").sideNav();
-        });
-  </script>
 </html>

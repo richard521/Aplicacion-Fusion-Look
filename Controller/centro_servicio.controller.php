@@ -14,6 +14,7 @@
 		case 'C':
 			# Create
 			# inicializar las variables que enviara el formulario y las que se guardaran en la tabla
+			$Id_administrador		=$_POST["Id_administrador"];
 			$Id_ciudad				=$_POST["Id_ciudad"];
 			$Nombre					=$_POST["Nombre"];
 			$Direccion				=$_POST["Direccion"];
@@ -21,8 +22,9 @@
 			$Telefono				=$_POST["Telefono"];
 			
 			try {
-				centro_servicio::Create($Id_ciudad,$Nombre,$Direccion,$Email,$Telefono);
+				centro_servicio::Create($Id_administrador,$Id_ciudad,$Nombre,$Direccion,$Email,$Telefono);
 				$mensaje="Centro de servicio registrado con exito.";
+				header("Location: ../Views/index.php");
 			} catch (Exception $e){
 				$mensaje="Lo sentimos, ha ocurrido un error al momento de hacer el registro, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();	
 			}
@@ -55,6 +57,5 @@
 				$mensaje="Lo sentimos, ha ocurrido un error al momento de eliminar el usuario, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();	
 			}
 			break;
-	}
-	header("Location: ../Views/centro_servicio.php?msn=$mensaje");
+	} 
 ?>

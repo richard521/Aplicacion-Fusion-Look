@@ -41,9 +41,9 @@
         return /\d/.test(String.fromCharCode(keynum));
         }
 	  </script>-->
-	<title>Registro usuarios</title>
+	<title>Registro administradores</title>
   <nav class="grey darken-1">
-
+  	
   </nav>
 </head>
 <body>
@@ -51,10 +51,10 @@
 		<div class="row">
 			<form action="../Controller/usuario.controller.php" method="POST" class="col s12">
 				<div class="row">
-					<h3>Registro usuario nuevo</h3>
+					<h3>Registro administrador nuevo</h3>
 						<article>
 							<div class="input-field col s12">
-								<input type="text" id="Tipo_usuario" name="Tipo_usuario" class="validate" value="Usuario" onkeypress="return validar(event)" readonly>
+								<input type="text" id="Tipo_usuario" name="Tipo_usuario" class="validate" value="Administrador" onkeypress="return validar(event)" readonly>
 								<label for="Tipo_usuario">Tipo de usuario</label>
   							</div>
 							<div class="input-field col s12">
@@ -103,6 +103,7 @@
 										<label for="inactivo">Inactivo</label>
 									</p>
 								<br>
+								<!--<a href="pruebahome.php" class="waves-effect waves-light btn red darken-1 left tooltipped" data-tooltip="Volver" data-position="top">Cancelar</a>-->
 								<a href="<?=$_SERVER['HTTP_REFERER'] ?>" class="waves-effect waves-light btn red darken-1 left tooltipped" data-tooltip="Volver" data-position="top">Cancelar</a>
 								<button class="waves-effect waves-light  btn right cyan darken-1" name="acc" value="C" onclick="return valida()">Enviar</button>
 							</div>
@@ -112,7 +113,7 @@
 			
 		</div>
 	</section>
-	
+
 	<!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="js/jquery-1.12.3.js"></script>
       <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
@@ -121,17 +122,6 @@
 	  	$(document).ready(function() {
     	$('select').material_select();
   		});
-	  </script>
-	  <script type="text/javascript">
-	  		$(document).ready(function()
-	  		{
-	  			<?php 
-	  				if(isset($_GET["msn"]))
-	  				{
-	  					echo "swal('".$_GET["msn"]."','','error');";
-	  				}
-	  			 ?>
-	  		})
 	  </script>
 </body>
 </html>

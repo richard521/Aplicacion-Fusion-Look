@@ -1,6 +1,6 @@
 <?php
 	# ->Class: usuario
-	# ->Method(s): Create(), ReaadAll(),ReadbyId(), Readbyname(), Update(), Delete(), Login()
+	# ->Method(s): Create(), ReadAll(),ReadbyId(), Readbyname(), Update(), Delete(), Login()
 	#Author: Londoño Ochoa
 
 	class usuario{
@@ -32,6 +32,26 @@
 			$consulta="SELECT * FROM usuario";
 			$query=$conexion->prepare($consulta);
 			$query->execute();
+			/* devolver el resultado en un array
+				Fetch: es el resultado que arroja la consulta en forma de vector o matriz
+				segun sea el caso, para consultas donde arroja mas de un dato. el Fetch debe ir acompañado con la palabra ALL.
+			*/
+			$resultado=$query->fetchALL(PDO::FETCH_BOTH);
+			return $resultado;
+
+			fusion_look_DB::Disconnect();	
+		}
+		
+		function ReadbyType()
+		{
+			//Instanciamos y hacemos conexion a la base de datos(fusion_look)
+			$conexion=fusion_look_DB::Connect();
+			$conexion->SetAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+			//Crear el query que se llevara a cabo
+			$consulta="SELECT * FROM usuario WHERE Tipo_usuario= 'Desarrollador' ";
+			$query=$conexion->prepare($consulta);
+			$query->execute(array());
 			/* devolver el resultado en un array
 				Fetch: es el resultado que arroja la consulta en forma de vector o matriz
 				segun sea el caso, para consultas donde arroja mas de un dato. el Fetch debe ir acompañado con la palabra ALL.

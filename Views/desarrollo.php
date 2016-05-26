@@ -1,3 +1,19 @@
+<?php 
+	session_start();
+
+	if(!isset($_SESSION["Id_usuario"])){
+		$mensaje=("Debes iniciar sesion primero");
+		$tipo_mensaje=("advertencia");
+
+		header("Location: ../Views/login.php?m=".$mensaje."&t=".$tipo_mensaje);
+	}
+  if($_SESSION["Tipo_usuario"]!=="Desarrollador"){
+    $mensaje=("Solo los desarrolladores tienen acceso a este contenido");
+    $tipo_mensaje=("advertencia");
+    header("Location: editarusuario.php?m=".$mensaje."&t=".$tipo_mensaje);
+  }	
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,7 +21,7 @@
 	  <link rel="stylesheet" type="text/css" href="estilos/estilos_usuario.css">
 	  <!--<link rel="stylesheet" type="text/css" href="estilos/estilos_usuario.css">-->
 	  <!--Import Google Icon Font-->
-	  <link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+	  <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
       <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
@@ -31,7 +47,7 @@
 		return patron.test(te);
 		}
 	  </script>-->
-	  <!--<script type="text/javascript">
+	  <script type="text/javascript">
 	  	function justNumbers(e)
         {
         var keynum = window.event ? window.event.keyCode : e.which;
@@ -40,21 +56,20 @@
          
         return /\d/.test(String.fromCharCode(keynum));
         }
-	  </script>-->
-	<title>Registro usuarios</title>
-  <nav class="grey darken-1">
-
-  </nav>
+	  </script>
+	<title>Registro desarrollador</title>
+	<nav class="grey darken-1">
+    </nav>
 </head>
 <body>
 	<section >
 		<div class="row">
 			<form action="../Controller/usuario.controller.php" method="POST" class="col s12">
 				<div class="row">
-					<h3>Registro usuario nuevo</h3>
+					<h3>Registro desarrollador nuevo</h3>
 						<article>
 							<div class="input-field col s12">
-								<input type="text" id="Tipo_usuario" name="Tipo_usuario" class="validate" value="Usuario" onkeypress="return validar(event)" readonly>
+								<input type="text" id="Tipo_usuario" name="Tipo_usuario" class="validate" value="Desarrollador" onkeypress="return validar(event)" readonly>
 								<label for="Tipo_usuario">Tipo de usuario</label>
   							</div>
 							<div class="input-field col s12">
@@ -112,7 +127,7 @@
 			
 		</div>
 	</section>
-	
+
 	<!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="js/jquery-1.12.3.js"></script>
       <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
@@ -120,18 +135,9 @@
 	  <script type="text/javascript">
 	  	$(document).ready(function() {
     	$('select').material_select();
+    	$(".dropdown-button").dropdown();
+        $(".button-collapse").sideNav();
   		});
-	  </script>
-	  <script type="text/javascript">
-	  		$(document).ready(function()
-	  		{
-	  			<?php 
-	  				if(isset($_GET["msn"]))
-	  				{
-	  					echo "swal('".$_GET["msn"]."','','error');";
-	  				}
-	  			 ?>
-	  		})
 	  </script>
 </body>
 </html>

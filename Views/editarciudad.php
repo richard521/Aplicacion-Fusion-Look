@@ -7,9 +7,17 @@
 
 		header("Location: ../Views/login.php?m=".$mensaje."&t=".$tipo_mensaje);
 	}
+	if ($_SESSION["Tipo_usuario"]="Desarrollador") {
+		$mensaje=("No puede editar");
+		header("Location: gestionciudad.php?m=".$mensaje);
+	}
 	require_once("../Model/dbconn.php");
 	require_once("../Model/ciudad.class.php");
 	$ciudad = ciudad::ReadbyId($_REQUEST["cui"]);
+	if ($ciudad==null) {
+		$mensaje=("Selecciona una ciudad");
+		header("Location: gestionciudad.php?m=".$mensaje);
+	}
 ?>
 <!DOCTYPE html>
 <html>

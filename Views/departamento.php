@@ -4,6 +4,7 @@
 	<link rel="stylesheet" type="text/css" href="estilos/estilos_usuario.css">
 	  <!--<link rel="stylesheet" type="text/css" href="estilos/estilos_usuario.css">-->
 	  <!--Import Google Icon Font-->
+	  <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
       <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
@@ -11,13 +12,12 @@
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<title>Agregar departamento</title>
-  <nav class="cyan darken-1">
-    <div class="nav-wrapper">
-      <a href="pruebahome.php" class="brand-logo" id="titulo">Fusion-Look</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-      </ul>
-    </div>
-  </nav>
+  <!--<nav>
+    <?php 
+    	/*require_once("../Model/usuario.class.php");
+    	include_once("../Model/menu.php");*/
+    ?>
+  </nav>-->
 </head>
 <body>
 	<section >
@@ -46,5 +46,11 @@
       <script type="text/javascript" src="js/jquery-1.12.3.js"></script>
       <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 	  <script src="sweetalert/sweetalert-master/dist/sweetalert.min.js"></script>
+	  <script type="text/javascript">
+        $(document).ready(function() {
+        $(".dropdown-button").dropdown();
+        $(".button-collapse").sideNav();
+        });
+  	</script>
 </body>
 </html>

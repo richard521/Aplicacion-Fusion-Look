@@ -5,7 +5,7 @@
 	//hacemos conexion a la base de datos(fusion_look)
 	require_once("../Model/dbconn.php");
 	//traemos las clases necesarias
-	require_once("../Model/usuario.class.php");
+	require_once("../Model/administrador.class.php");
 	//instanciamos las variables globales y una llamada "$accion"
 	//"la variable accion nos indicara que parte del CRUD estamos creando"
 
@@ -14,54 +14,16 @@
 		case 'C':
 			# Create
 			# inicializar las variables que enviara el formulario y las que se guardaran en la tabla
-			$Tipo_usuario			=$_POST["Tipo_usuario"];
-			$Nombre					=$_POST["Nombre"];
-			$Apellido				=$_POST["Apellido"];
-			$Clave					=$_POST["Clave"];
-			$Email					=$_POST["Email"];
-			$Telefono				=$_POST["Telefono"];
-			$Sexo					=$_POST["Sexo"];
-			$Estado					=$_POST["Estado"];
-			if ($Tipo_usuario=="Usuario") {
+			$Id_usuario			=$_POST["Id_usuario"];
+
 				try {
-					usuario::Create($Tipo_usuario,$Nombre,$Apellido,$Clave,$Email,$Telefono,$Sexo,$Estado);
-					$mensaje="Usuario registrado con exito.";
-					header("Location: ../Views/login.php?msn=".$mensaje);
-				} catch (Exception $e){
-					$mensaje="Lo sentimos, ha ocurrido un error al momento de hacer el registro, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();
-					header("Location: ../Views/usuario.php?msn=$mensaje");	
-				}
-			}
-			else if($Tipo_usuario=="Desarrollador"){
-				try {
-					usuario::Create($Tipo_usuario,$Nombre,$Apellido,$Clave,$Email,$Telefono,$Sexo,$Estado);
-					$mensaje="Desarrollador registrado con exito.";
-					header("Location: ../Views/indeax.php?msn=$mensaje");
-				} catch (Exception $e){
-					$mensaje="Lo sentimos, ha ocurrido un error al momento de hacer el registro, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();
-					header("Location: ../Views/admins.php?msn=$mensaje");	
-				}
-			}
-			else if($Tipo_usuario=="Administrador"){
-				try {
-					usuario::Create($Tipo_usuario,$Nombre,$Apellido,$Clave,$Email,$Telefono,$Sexo,$Estado);
+					administrador::Create($Id_usuario);
 					$mensaje="Administrador registrado con exito.";
-					header("Location: ../Views/admins.php?msn=$mensaje");
+					header("Location: ../Views/index.php?msn=$mensaje");
 				} catch (Exception $e){
 					$mensaje="Lo sentimos, ha ocurrido un error al momento de hacer el registro, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();
-					header("Location: ../Views/admins.php?msn=$mensaje");	
+					header("Location: ../Views/administrador.php?msn=$mensaje");	
 				}
-			}
-			else if($Tipo_usuario=="Empleado"){
-				try {
-					usuario::Create($Tipo_usuario,$Nombre,$Apellido,$Clave,$Email,$Telefono,$Sexo,$Estado);
-					$mensaje="Empleado registrado con exito.";
-					header("Location: ../Views/indeax.php?msn=$mensaje");
-				} catch (Exception $e){
-					$mensaje="Lo sentimos, ha ocurrido un error al momento de hacer el registro, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();
-					header("Location: ../Views/admins.php?msn=$mensaje");	
-				}
-			}
 			break;
 		case 'U':
 			# Update

@@ -17,14 +17,14 @@
 
 			fusion_look_DB::Disconnect();
 		}
-		function ReadAll()
+		function ReadInner()
 		{
 			//Instanciamos y hacemos conexion a la base de datos(fusion_look)
 			$conexion=fusion_look_DB::Connect();
-			$conexion->SetAttribute(PDO::ATTR_ERRMODE.PDO::ERRMODE_EXCEPTION);
+			$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 			//Crear el query que se llevara a cabo
-			$consulta="SELECT * FROM empleado";
+			$consulta="SELECT Id_empleado, Nombre FROM empleado INNER JOIN usuario ON empleado.Id_usuario = usuario.Id_usuario";
 			$query=$conexion->prepare($consulta);
 			$query->execute();
 			/* devolver el resultado en un array
