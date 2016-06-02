@@ -5,12 +5,12 @@ if($_SESSION["Tipo_usuario"]=="Usuario"){
         <style type="text/css">
         .brand-logo {font-family: 'Poiret One'}
       </style>
-        <ul id="centros" class="dropdown-content">
-            <li><a href="gestioncentros.php">Consultar</a></li>
+        <ul id="centros" class="dropdown-content grey darken-1"style="margin-top: 64px;">
+            <li><a href="gestioncentros.php"style="color: white;">Consultar</a></li>
         </ul>
-        <ul id="cita" class="dropdown-content">
-            <li><a href="cita.php">Agendar cita</a></li>
-            <li><a href="gestioncita.php">Mis citas</a></li>
+        <ul id="cita" class="dropdown-content grey darken-1"style="margin-top: 64px;">
+            <li><a href="cita.php"style="color: white;">Agendar cita</a></li>
+            <li><a href="gestioncita.php"style="color: white;">Mis citas</a></li>
         </ul>
             <a href="#" class="brand-logo">Fusion-Look</a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -36,21 +36,21 @@ if($_SESSION["Tipo_usuario"]=="Usuario"){
         <style type="text/css">
         .brand-logo {font-family: 'Poiret One'}
       </style>
-        <ul id="centros" class="dropdown-content">
-            <li><a href="centro_servicio.php">Crear</a></li>
-            <li><a href="gestioncentros.php">Gestionar</a></li>
+        <ul id="centros" class="dropdown-content grey darken-1"style="margin-top: 64px;">
+            <li><a href="centro_servicio.php"style="color: white;">Crear</a></li>
+            <li><a href="gestioncentros.php"style="color: white;">Gestionar</a></li>
         </ul>
-        <ul id="empleados" class="dropdown-content">
-            <li><a href="#">Crear</a></li>
-            <li><a href="#">Gestionar</a></li>
+        <ul id="empleados" class="dropdown-content grey darken-1"style="margin-top: 64px;">
+            <li><a href="#"style="color: white;">Crear</a></li>
+            <li><a href="#"style="color: white;">Gestionar</a></li>
         </ul>
-        <ul id="servicios" class="dropdown-content">
-            <li><a href="servicio.php">Crear</a></li>
-            <li><a href="gestionservicios.php">Gestionar</a></li>
+        <ul id="servicios" class="dropdown-content grey darken-1"style="margin-top: 64px;">
+            <li><a href="servicio.php"style="color: white;">Crear</a></li>
+            <li><a href="gestionservicios.php"style="color: white;">Gestionar</a></li>
         </ul>
-        <ul id="tiposer" class="dropdown-content">
-            <li><a href="tipo_servicio.php">Crear</a></li>
-            <li><a href="#">Consultar</a></li>
+        <ul id="tiposer" class="dropdown-content grey darken-1"style="margin-top: 64px;">
+            <li><a href="tipo_servicio.php"style="color: white;">Crear</a></li>
+            <li><a href="#"style="color: white;">Consultar</a></li>
         </ul>
             <a href="#" class="brand-logo">Fusion-Look</a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -76,27 +76,24 @@ if($_SESSION["Tipo_usuario"]=="Usuario"){
         <style type="text/css">
         .brand-logo {font-family: 'Poiret One'}
         </style>
-        <ul id="desarrollo" class="dropdown-content">
-            <li><a href="desarrollo.php">Crear</a></li>
-            <li><a href="gestiondesarrollo.php">Consultar</a></li>
+        <ul id="desarrollo" class="dropdown-content grey darken-1" style="margin-top: 64px;">
+            <li><a href="desarrollo.php" style="color: white;">Crear</a></li>
+            <li><a href="gestiondesarrollo.php" style="color: white;">Consultar</a></li>
         </ul>
-        <ul id="admins" class="dropdown-content">
-            <li><a href="administrador.php">Crear</a></li>
-            <li><a href="#">Gestionar</a></li>
+        <ul id="admins" class="dropdown-content grey darken-1"style="margin-top: 64px;">
+            <li><a href="administrador.php" style="color: white;">Crear</a></li>
+            <li><a href="gestionadmins.php" style="color: white;">Gestionar</a></li>
         </ul>
-        <ul id="users" class="dropdown-content">
-            <li><a href="gestion.php">Gestionar</a></li>
+        <ul id="users" class="dropdown-content grey darken-1"style="margin-top: 64px;">
+            <li><a href="gestion.php" style="color: white;">Gestionar</a></li>
         </ul>
-        <ul id="departamentos" class="dropdown-content">
-            <li><a href="departamento.php">Crear</a></li>
-            <li><a href="gestiondepartamento.php">Gestionar</a></li>
+        <ul id="departamentos" class="dropdown-content grey darken-1"style="margin-top: 64px;">
+            <li><a href="departamento.php" style="color: white;">Crear</a></li>
+            <li><a href="gestiondepartamento.php" style="color: white;">Gestionar</a></li>
         </ul>
-        <ul id="ciudades" class="dropdown-content">
-            <li><a href="ciudad.php">Crear</a></li>
-            <li><a href="gestionciudad.php">Gestionar</a></li>
-        </ul>
-        <ul id="tiposer" class="dropdown-content">
-            <li><a href="#">Gestionar</a></li>
+        <ul id="ciudades" class="dropdown-content grey darken-1"style="margin-top: 64px;">
+            <li><a href="ciudad.php" style="color: white;">Crear</a></li>
+            <li><a href="gestionciudad.php" style="color: white;">Gestionar</a></li>
         </ul>
             <a href="pruebainicio.php" class="brand-logo">Fusion-Look</a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>

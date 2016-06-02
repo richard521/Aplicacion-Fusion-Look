@@ -1,5 +1,5 @@
 <?php
-	session_start();
+	session_start(); 
 
 	if(!isset($_SESSION["Id_usuario"])){
 		$mensaje=("Debes iniciar sesion primero");
@@ -7,6 +7,12 @@
 
 		header("Location: ../Views/login.php?m=".$mensaje."&t=".$tipo_mensaje);
 	}
+  if ($_SESSION["Tipo_usuario"]!="Desarrollador") {
+    $mensaje=("Solo los desarrolladores tienen acceso");
+    $tipo_mensaje=("advertencia");
+
+    header("Location: ../Views/login.php?m=".$mensaje."&t=".$tipo_mensaje);
+  }
   require_once("../Model/dbconn.php");
 	require_once("../Model/usuario.class.php");
 ?>
@@ -42,7 +48,7 @@
       </nav>
     </head>
   	<body>
-    <h1>Gestion de usuarios</h1>
+    <h1>Gestion de Administradores</h1>
     <table id="datatable" class="display">
       <thead>
         <tr>
@@ -55,13 +61,13 @@
           <th>Sexo</th>
           <th>Estado</th>
           <th>Tipo de usuario</th>
-          <th>Acciones</th>
+          <!--<th>Acciones</th>-->
         </tr>
       </thead>
       <tbody>
       <?php
 
-      $usuario = usuario::ReadUse();
+      $usuario = usuario::ReadAdm();
       foreach ($usuario as $row) {    
       echo "<tr>
                 <td>".$row["Id_usuario"]."</td>
@@ -73,13 +79,13 @@
                 <td>".$row["Sexo"]."</td>
                 <td>".$row["Estado"]."</td>
                 <td>".$row["Tipo_usuario"]."</td>
-                <td>
+                <!--<td>
 
                   <a href='editarusuario.php?ui=".($row["Id_usuario"])."'><i class='small material-icons'>mode_edit</i></a>
                   <a href='../Controller/usuario.controller.php?ui=".($row["Id_usuario"])."&acc=D'><i class='small material-icons'>delete</i></a>
 
 
-                </td>
+                </td>-->
               </tr>";
           }
          ?>

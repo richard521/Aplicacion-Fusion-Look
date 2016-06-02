@@ -18,6 +18,7 @@
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.css">
     <!--Import Google Icon Font-->
 	  <!--<link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>-->
+      <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
       <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
@@ -29,10 +30,19 @@
       <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>
 
       <script>
-    	$(document).ready( function () {
-      	$('#datatable').DataTable();
-    	});
+      $(document).ready( function () {
+        $('#datatable').DataTable({
+           "language": {               
+                     "url": "https://cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json"       
+                } 
+              })
+      }); 
     </script>
+    <nav>
+      <?php 
+        include_once("../Model/menu.php")
+       ?>
+    </nav>
     </head>
   	<body>
     <h1>Gestion de ciudades</h1>
@@ -56,8 +66,8 @@
                 <td>".$row["Nombre"]."</td>
                 <td>
 
-                  <a href='editarciudad.php?cui=".($row["Id_ciudad"])."'><i class='small material-icons'>mode_edit</i></a>
-                  <a href='../Controller/ciudad.controller.php?ui=".($row["Id_ciudad"])."&acc=D'><i class='small material-icons'>delete</i></a>
+                  <a href='editarciudad.php?cui=".($row["Id_ciudad"])."'><i class='small material-icons' style='color: #757575'>mode_edit</i></a>
+                  <a href='../Controller/ciudad.controller.php?ui=".($row["Id_ciudad"])."&acc=D'><i class='small material-icons' style='color: #757575'>delete</i></a>
 
 
                 </td>
@@ -67,4 +77,11 @@
         </tbody>
     </table>
   </body>
+  <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+  <script type="text/javascript">
+        $(document).ready(function() {
+        $(".dropdown-button").dropdown();
+        $(".button-collapse").sideNav();
+        });
+  </script>
 </html>

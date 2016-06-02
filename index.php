@@ -19,7 +19,7 @@
 </head>
 <body>
   <header>
-    <nav class="grey darken-1">
+    <nav class="grey darken-2">
       <div class="nav-wrapper">
         <a href="#" class="brand-logo" style="font-size:40px;">Fusion-Look</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -27,7 +27,7 @@
           <li><a href="#q" class="iniciar">Quienes somos</a></li>
           <li><a href="#a" class="iniciar">Administradores</a></li>
           <li><a href="#g" class="iniciar">Geolocalizacion</a></li>
-          <li><a href="login.php" class="iniciar">Iniciar sesión</a></li>
+          <li><a href="Views/login.php" class="iniciar">Iniciar sesión</a></li>
         </ul>
         <ul class="side-nav" id="mobile-demo">
         <li><a href="login.php" style="color:grey darken-1; font-family: 'Poiret one'; font-size: 20px;">Iniciar sesión</a></li>
@@ -94,13 +94,13 @@
       </div>
     </div>
     <div class="parallax-container">
-      <div class="parallax"><img src="images/fondo.jpg"></div>
+      <div class="parallax"><img src="Views/images/fondo.jpg"></div>
     </div>
     <div class="container">
       <h3 class="textq" id="g">Geolocalizacion</h3>
       <div class="row">
         <div class="col s12 m12 l7 ">
-          <img class="imginfo" src="images/mapa.jpg">
+          <img class="imginfo" src="Views/images/mapa.jpg">
         </div>
         <div class="col s12 m12 l5 mockup">
           <span class="flow-text" style="font-size:20px;">Con Fusion-Look tienes la posibilidad de encontrar las barberias, salones de belleza, salas de masajes y spa´s que estan cerca de ti, gracias a nuestro sistema de geolocalizacion.</span>
@@ -109,8 +109,8 @@
     </div>
 </body>
       
-      <script type="text/javascript" src="js/jquery-1.12.3.js"></script>
-      <script type="text/javascript" src="materialize/js/materialize.js"></script>
+      <script type="text/javascript" src="Views/js/jquery-1.12.3.js"></script>
+      <script type="text/javascript" src="Views/materialize/js/materialize.js"></script>
       <script> 
         $(document).ready(function(){
           $(".button-collapse").sideNav();

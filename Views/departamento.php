@@ -1,3 +1,7 @@
+<?php 
+	session_start();
+
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,12 +16,11 @@
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<title>Agregar departamento</title>
-  <!--<nav>
+  <nav>
     <?php 
-    	/*require_once("../Model/usuario.class.php");
-    	include_once("../Model/menu.php");*/
+ 		include_once("../Model/menu.php");
     ?>
-  </nav>-->
+  </nav>
 </head>
 <body>
 	<section >

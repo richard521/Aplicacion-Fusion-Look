@@ -7,8 +7,14 @@
 
 		header("Location: ../Views/login.php?m=".$mensaje."&t=".$tipo_mensaje);
 	}
+  if ($_SESSION["Tipo_usuario"]!="Desarrollador") {
+    $mensaje=("Solo los desarrolladores tienen acceso");
+    $tipo_mensaje=("advertencia");
+
+    header("Location: ../Views/login.php?m=".$mensaje."&t=".$tipo_mensaje);
+  }
   require_once("../Model/dbconn.php");
-	require_once("../Model/usuario.class.php");
+	require_once("../Model/departamento.class.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -42,44 +48,24 @@
       </nav>
     </head>
   	<body>
-    <h1>Gestion de usuarios</h1>
+    <h1>Gestion Departamentos</h1>
     <table id="datatable" class="display">
       <thead>
         <tr>
           <th>Codigo</th>
           <th>Nombre</th>
-          <th>Apellido</th>
-          <th>Clave</th>
-          <th>Correo electronico</th>
-          <th>Telefono</th>
-          <th>Sexo</th>
-          <th>Estado</th>
-          <th>Tipo de usuario</th>
-          <th>Acciones</th>
+          <!--<th>Acciones</th>-->
         </tr>
       </thead>
       <tbody>
       <?php
 
-      $usuario = usuario::ReadUse();
-      foreach ($usuario as $row) {    
+      $depar = departamento::ReadAll();
+      foreach ($depar as $row) {    
       echo "<tr>
-                <td>".$row["Id_usuario"]."</td>
+                <td>".$row["Id_departamento"]."</td>
                 <td>".$row["Nombre"]."</td>
-                <td>".$row["Apellido"]."</td>
-                <td>".$row["Clave"]."</td>
-                <td>".$row["Email"]."</td>
-                <td>".$row["Telefono"]."</td>
-                <td>".$row["Sexo"]."</td>
-                <td>".$row["Estado"]."</td>
-                <td>".$row["Tipo_usuario"]."</td>
-                <td>
-
-                  <a href='editarusuario.php?ui=".($row["Id_usuario"])."'><i class='small material-icons'>mode_edit</i></a>
-                  <a href='../Controller/usuario.controller.php?ui=".($row["Id_usuario"])."&acc=D'><i class='small material-icons'>delete</i></a>
-
-
-                </td>
+                
               </tr>";
           }
          ?>

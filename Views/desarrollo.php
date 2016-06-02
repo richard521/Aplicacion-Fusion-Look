@@ -58,7 +58,10 @@
         }
 	  </script>
 	<title>Registro desarrollador</title>
-	<nav class="grey darken-1">
+	<nav>
+		<?php
+			include_once ("../Model/menu.php")
+		?>
     </nav>
 </head>
 <body>
@@ -118,8 +121,9 @@
 										<label for="inactivo">Inactivo</label>
 									</p>
 								<br>
-								<a href="<?=$_SERVER['HTTP_REFERER'] ?>" class="waves-effect waves-light btn red darken-1 left tooltipped" data-tooltip="Volver" data-position="top">Cancelar</a>
-								<button class="waves-effect waves-light  btn right cyan darken-1" name="acc" value="C" onclick="return valida()">Enviar</button>
+								<a href="<?=$_SERVER['HTTP_REFERER'] ?>" class="waves-effect waves-light btn left tooltipped red accent-2
+" data-tooltip="Volver" data-position="top">Cancelar</a>
+								<button class="waves-effect waves-light  btn right  blue accent-2" name="acc" value="C" onclick="return valida()">Enviar</button>
 							</div>
 						</article>
 				

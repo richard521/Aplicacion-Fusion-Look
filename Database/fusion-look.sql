@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-05-2016 a las 02:16:49
+-- Tiempo de generación: 02-06-2016 a las 02:17:43
 -- Versión del servidor: 10.1.10-MariaDB
 -- Versión de PHP: 5.6.15
 
@@ -74,22 +74,11 @@ INSERT INTO `centro_servicio` (`Id_centro`, `Id_administrador`, `Id_ciudad`, `No
 
 CREATE TABLE `cita` (
   `Id_cita` int(11) NOT NULL,
+  `Id_centro` int(11) NOT NULL,
   `Id_usuario` int(11) NOT NULL,
   `Id_empleado` int(11) NOT NULL,
   `Fecha_cita` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `cita`
---
-
-INSERT INTO `cita` (`Id_cita`, `Id_usuario`, `Id_empleado`, `Fecha_cita`) VALUES
-(2, 21, 2, '5 May, 2016'),
-(3, 12, 2, '3 May, 2016'),
-(5, 21, 2, '28 May, 2016'),
-(7, 21, 2, '14 May, 2016'),
-(8, 21, 2, '9 May, 2016'),
-(9, 32, 3, '28 May, 2016');
 
 -- --------------------------------------------------------
 
@@ -414,7 +403,8 @@ INSERT INTO `usuario` (`Id_usuario`, `Tipo_usuario`, `Nombre`, `Apellido`, `Clav
 (45, 'Usuario', 'asdasdasd', 'asdasd', 'asdasdasd', 'asdasd@sadasd.com', '123141234', 'Masculino', 'Activo'),
 (46, 'Usuario', 'asdasdasd', 'asdasd', 'adasdasdasdasd', 'asdasd@sadasd.com', '123123123', 'Masculino', 'Activo'),
 (47, 'Usuario', 'sdfaddas', 'asadafdsf', 'asdasdaf', 'asdasd@sadasd.com', '124413241232', 'Masculino', 'Activo'),
-(48, 'Usuario', 'asdasdasd', 'asdas', 'sadasdaSDASD', 'asdasd@sadasd.com', '12312312', 'Masculino', 'Activo');
+(48, 'Usuario', 'asdasdasd', 'asdas', 'sadasdaSDASD', 'asdasd@sadasd.com', '12312312', 'Masculino', 'Activo'),
+(49, 'Usuario', 'pruebas super asdasd', 'pruebas super asdasd', 'pruebas super asdasd', 'pruebas@sdasd.com', '245234241254', 'Femenino', 'Activo');
 
 --
 -- Índices para tablas volcadas
@@ -441,7 +431,8 @@ ALTER TABLE `centro_servicio`
 ALTER TABLE `cita`
   ADD PRIMARY KEY (`Id_cita`),
   ADD KEY `Id_usuario` (`Id_usuario`),
-  ADD KEY `Id_empleado` (`Id_empleado`);
+  ADD KEY `Id_empleado` (`Id_empleado`),
+  ADD KEY `Id_centro` (`Id_centro`);
 
 --
 -- Indices de la tabla `ciudad`
@@ -533,7 +524,7 @@ ALTER TABLE `tipo_servicio`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `Id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `Id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 --
 -- Restricciones para tablas volcadas
 --
@@ -556,7 +547,8 @@ ALTER TABLE `centro_servicio`
 --
 ALTER TABLE `cita`
   ADD CONSTRAINT `cita_ibfk_1` FOREIGN KEY (`Id_empleado`) REFERENCES `empleado` (`Id_empleado`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `cita_ibfk_2` FOREIGN KEY (`Id_usuario`) REFERENCES `usuario` (`Id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `cita_ibfk_2` FOREIGN KEY (`Id_usuario`) REFERENCES `usuario` (`Id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `cita_ibfk_3` FOREIGN KEY (`Id_centro`) REFERENCES `centro_servicio` (`Id_centro`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `ciudad`

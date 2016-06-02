@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	include ("../Model/departamento.class.php");
 	include ("../Model/dbconn.php"); 
 	$departamento = departamento::ReadAll(); 
@@ -16,12 +17,10 @@
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<title>Registro ciudad</title>
-  <nav class="cyan darken-1">
-    <div class="nav-wrapper">
-      <a href="pruebahome.php" class="brand-logo" id="titulo">Fusion-Look</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-      </ul>
-    </div>
+  <nav>
+    <?php 
+    	include_once("../Model/menu.php");
+     ?>
   </nav>
 </head>
 <body>

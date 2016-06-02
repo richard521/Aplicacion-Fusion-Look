@@ -49,6 +49,7 @@
   	<body>
     <h1>Consultar desarrolladores</h1>
     <table id="datatable"><!-- class="display highlight responsive-table">-->
+    <a href="desarrollo.php" class="waves-effect waves-light btn grey darken-1">Crear nuevo</a>
       <thead>
         <tr>
           <th>N° Administrador</th>
@@ -62,7 +63,7 @@
       </thead>
       <tbody>
       <?php
-      $desarrollo = usuario::ReadbyType();
+      $desarrollo = usuario::ReadDev();
       //$centro = centro_servicio::ReadbyIdadmin();
       foreach ($desarrollo as $row) {    
       echo "<tr>
@@ -79,7 +80,7 @@
         </tbody>
     </table>
   </body>
-      <script type="text/javascript" src="js/jquery-1.12.3.js"></script>
+      <!--<script type="text/javascript" src="js/jquery-1.12.3.js"></script>-->
       <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
       <script type="text/javascript">
         $(document).ready(function() {

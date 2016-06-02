@@ -1,3 +1,6 @@
+<?php 
+	session_start();
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,7 +46,7 @@
 	  </script>-->
 	<title>Registro administradores</title>
   <nav class="grey darken-1">
-  	
+  	<?php include_once("../Model/menu.php"); ?>
   </nav>
 </head>
 <body>
