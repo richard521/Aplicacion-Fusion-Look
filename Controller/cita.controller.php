@@ -14,17 +14,21 @@
 		case 'C':
 			# Create
 			# inicializar las variables que enviara el formulario y las que se guardaran en la tabla
+			$Id_centro			=$_POST["Id_centro"];
 			$Id_usuario			=$_POST["Id_usuario"];
 			$Id_empleado		=$_POST["Id_empleado"];
 			$Fecha_cita			=$_POST["Fecha_cita"];
+			$Hora				=$_POST["Hora"];
 			
 			try {
-				cita::Create($Id_usuario,$Id_empleado,$Fecha_cita);
+				cita::Create($Id_centro,$Id_usuario,$Id_empleado,$Fecha_cita,$Hora);
 				$mensaje="Cita agendada con exito.";
+				$tipo_mensaje="success";
 			} catch (Exception $e){
 				$mensaje="Lo sentimos, ha ocurrido un error al momento de hacer el registro, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();	
+				$tipo_mensaje="error";
 			}
-			header("Location: ../Views/cita_usuario.php?msn=$mensaje");
+			header("Location: ../Views/pruebainicio.php?msn=".$mensaje."&t=".$tipo_mensaje);
 			break;
 		case 'U':
 			# Update

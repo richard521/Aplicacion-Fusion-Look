@@ -14,16 +14,6 @@
 			//Instanciamos y hacemos conexion a la base de datos(fusion_look)
 			$conexion=fusion_look_DB::Connect();
 			$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-			//prueba validacion registro duplicado
-			/*$valida="SELECT Email FROM usuario WHERE Email='$Email'";
-			$quer=$conexion->prepare($valida);
-			$quer->execute();
-			$val=$quer->fetchALL(PDO::FETCH_BOTH);
-			if ($val>0){
-				echo "sorry ya existe";
-				return false;
-			}
-			else{*/
 			//Crear el query que se llevara a cabo
 			$consulta="INSERT INTO usuario(Tipo_usuario,Nombre,Apellido,Clave,Email,Telefono,Sexo,Estado) values (?,?,?,?,?,?,?,?)";
 			$query=$conexion->prepare($consulta);
@@ -97,6 +87,25 @@
 
 			//Crear el query que se llevara a cabo
 			$consulta="SELECT * FROM usuario WHERE Tipo_usuario= 'Administrador' ";
+			$query=$conexion->prepare($consulta);
+			$query->execute(array());
+			/* devolver el resultado en un array
+				Fetch: es el resultado que arroja la consulta en forma de vector o matriz
+				segun sea el caso, para consultas donde arroja mas de un dato. el Fetch debe ir acompañado con la palabra ALL.
+			*/
+			$resultado=$query->fetchALL(PDO::FETCH_BOTH);
+			return $resultado;
+
+			fusion_look_DB::Disconnect();	
+		}
+		function Reademp()
+		{
+			//Instanciamos y hacemos conexion a la base de datos(fusion_look)
+			$conexion=fusion_look_DB::Connect();
+			$conexion->SetAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+			//Crear el query que se llevara a cabo
+			$consulta="SELECT * FROM usuario WHERE Tipo_usuario= 'Empleado' ";
 			$query=$conexion->prepare($consulta);
 			$query->execute(array());
 			/* devolver el resultado en un array

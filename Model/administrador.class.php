@@ -1,4 +1,5 @@
 <?php
+	//session_start();
 	# ->Class: administrador
 	# ->Method(s): Create(), ReadAll(),ReadbyId(), Readbyname(), Update(), Delete(), Login()
 	#Author: Londoño Ochoa
@@ -41,16 +42,17 @@
 
 			fusion_look_DB::Disconnect();	
 		}
-		function ReadInner()
+		function ReadInner()//($Id_usuario)
 		{
 			//Instanciamos y hacemos conexion a la base de datos(fusion_look)
 			$conexion=fusion_look_DB::Connect();
 			$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 			//Crear el query que se llevara a cabo
-			$consulta="SELECT Id_administrador, Nombre FROM administrador INNER JOIN usuario ON administrador.Id_usuario = usuario.Id_usuario";
+			$consulta="SELECT Id_administrador, Nombre FROM administrador INNER JOIN usuario ON administrador.Id_usuario = usuario.Id_usuario";// WHERE Id_usuario=?";
 			$query=$conexion->prepare($consulta);
 			$query->execute();
+			//$query->execute(array($Id_usuario));
 			/* devolver el resultado en un array
 				Fetch: es el resultado que arroja la consulta en forma de vector o matriz
 				segun sea el caso, para consultas donde arroja mas de un dato. el Fetch debe ir acompañado con la palabra ALL.

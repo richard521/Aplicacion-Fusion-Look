@@ -24,9 +24,10 @@
 			try {
 				centro_servicio::Create($Id_administrador,$Id_ciudad,$Nombre,$Direccion,$Email,$Telefono);
 				$mensaje="Centro de servicio registrado con exito.";
-				header("Location: ../Views/index.php");
+				header("Location: ../Views/pruebainicio.php?m=$mensaje");
 			} catch (Exception $e){
 				$mensaje="Lo sentimos, ha ocurrido un error al momento de hacer el registro, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();	
+				header("Location: ../Views/centro_servicio.php?m=$mensaje");
 			}
 			break;
 		case 'U':

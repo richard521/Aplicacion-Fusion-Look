@@ -11,16 +11,6 @@ function valida(){
 		swal("Todos los campos son obligatorios")
 		return false;
 	}
-	else if (tipo === ""){
-		swal("El campo tipo de usuario es obligatorio");
-		document.getElementById('Tipo_usuario').focus();
-		return false;
-	}
-	else if (tipo.length>50){
-		swal("El campo tipo de usuario no puede contener mas de 30 caracteres");
-		document.getElementById('Nombre').focus();
-		return false;
-	}
 	else if (nombre === ""){
 		swal({
 			title: "",

@@ -1,5 +1,11 @@
 <?php
-if($_SESSION["Tipo_usuario"]=="Usuario"){
+  if($_SESSION["Tipo_usuario"] == NULL){
+    $mensaje="Debes iniciar sesion primero";
+    $tipo_mensaje="warning";
+    header("Location: ../index.php?msn=".$mensaje."&t=".$tipo_mensaje);
+?>
+<?php
+}elseif($_SESSION["Tipo_usuario"]=="Usuario"){
 ?>
     <div class="nav-wrapper grey darken-1">
         <style type="text/css">
@@ -15,6 +21,7 @@ if($_SESSION["Tipo_usuario"]=="Usuario"){
             <a href="#" class="brand-logo">Fusion-Look</a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
+              <li><a class="dropdown-button" href="#!"><?php echo($_SESSION["Tipo_usuario"]).": ".($_SESSION["Nombre"])." ".($_SESSION["Apellido"]) ?></a></li>
               <li><a href="#">Inicio</a></li>
               <li><a href="#" class="dropdown-button" data-activates="centros">Centros de servicio</a></li>
               <li><a href="#" class="dropdown-button" data-activates="cita">Mis Citas</a></li>
@@ -41,8 +48,8 @@ if($_SESSION["Tipo_usuario"]=="Usuario"){
             <li><a href="gestioncentros.php"style="color: white;">Gestionar</a></li>
         </ul>
         <ul id="empleados" class="dropdown-content grey darken-1"style="margin-top: 64px;">
-            <li><a href="#"style="color: white;">Crear</a></li>
-            <li><a href="#"style="color: white;">Gestionar</a></li>
+            <li><a href="empleado.php"style="color: white;">Crear</a></li>
+            <li><a href="gestionempleado.php"style="color: white;">Gestionar</a></li>
         </ul>
         <ul id="servicios" class="dropdown-content grey darken-1"style="margin-top: 64px;">
             <li><a href="servicio.php"style="color: white;">Crear</a></li>
@@ -55,6 +62,7 @@ if($_SESSION["Tipo_usuario"]=="Usuario"){
             <a href="#" class="brand-logo">Fusion-Look</a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
+              <li><a class="dropdown-button" href="#!"><?php echo($_SESSION["Tipo_usuario"]).": ".($_SESSION["Nombre"])." ".($_SESSION["Apellido"]) ?></a></li>
               <li><a href="#" class="dropdown-button" data-activates="centros">Centros de servicio</a></li>
               <li><a href="#" class="dropdown-button" data-activates="empleados">Empleados</a></li>
               <li><a href="gestioncita.php">Citas</a></li>
@@ -98,6 +106,7 @@ if($_SESSION["Tipo_usuario"]=="Usuario"){
             <a href="pruebainicio.php" class="brand-logo">Fusion-Look</a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
+              <li><a class="dropdown-button" href="#!"><?php echo($_SESSION["Tipo_usuario"]).": ".($_SESSION["Nombre"])." ".($_SESSION["Apellido"]) ?></a></li>
               <li><a href="#" class="dropdown-button" data-activates="desarrollo">Desarrolladores</a></li>
               <li><a href="#" class="dropdown-button" data-activates="admins">Administradores</a></li>
               <li><a href="#" class="dropdown-button" data-activates="users">Usuarios</a></li>

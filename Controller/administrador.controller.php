@@ -19,7 +19,7 @@
 				try {
 					administrador::Create($Id_usuario);
 					$mensaje="Administrador registrado con exito.";
-					header("Location: ../Views/index.php?msn=$mensaje");
+					header("Location: ../Views/pruebainicio.php?msn=$mensaje");
 				} catch (Exception $e){
 					$mensaje="Lo sentimos, ha ocurrido un error al momento de hacer el registro, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();
 					header("Location: ../Views/administrador.php?msn=$mensaje");	

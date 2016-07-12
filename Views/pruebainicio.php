@@ -3,9 +3,9 @@
 
 	if(!isset($_SESSION["Id_usuario"])){
 		$mensaje=("Debes iniciar sesion primero");
-		$tipo_mensaje=("advertencia");
+		$tipo_mensaje=("warning");
 
-		header("Location: ../Views/login.php?m=".$mensaje."&t=".$tipo_mensaje);
+		header("Location: ../Views/login.php?msn=".$mensaje."&t=".$tipo_mensaje);
 	}
 ?>
 <!DOCTYPE html>
@@ -38,4 +38,15 @@
     	$(".button-collapse").sideNav();
     	});
 	</script>
+	<script type="text/javascript">
+	  		$(document).ready(function()
+	  		{
+	  			<?php 
+	  				if(isset($_GET["msn"]) and isset($_GET["t"]))
+	  				{
+	  					echo "swal('".$_GET["msn"]."','','".$_GET["t"]."');";
+	  				}
+	  			 ?>
+	  		});
+	  </script>
 </html>

@@ -8,7 +8,7 @@
 	  <link rel="stylesheet" type="text/css" href="estilos/estilos_usuario.css">
 	  <!--<link rel="stylesheet" type="text/css" href="estilos/estilos_usuario.css">-->
 	  <!--Import Google Icon Font-->
-	  <link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+	  <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
       <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
@@ -45,7 +45,7 @@
         }
 	  </script>-->
 	<title>Registro administradores</title>
-  <nav class="grey darken-1">
+  <nav class="grey darken-2">
   	<?php include_once("../Model/menu.php"); ?>
   </nav>
 </head>
@@ -57,8 +57,7 @@
 					<h3>Registro administrador nuevo</h3>
 						<article>
 							<div class="input-field col s12">
-								<input type="text" id="Tipo_usuario" name="Tipo_usuario" class="validate" value="Administrador" onkeypress="return validar(event)" readonly>
-								<label for="Tipo_usuario">Tipo de usuario</label>
+								<input type="hidden" id="Tipo_usuario" name="Tipo_usuario" class="validate" value="Administrador" onkeypress="return validar(event)">
   							</div>
 							<div class="input-field col s12">
 								<input type="text" id="Nombre" name="Nombre" class="validate" onkeypress="return validar(event)">

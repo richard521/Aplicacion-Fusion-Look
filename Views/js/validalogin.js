@@ -19,12 +19,12 @@ function validar(){
 		return false;
 	}
 	else if (clave.length>30){
-		swal("El campo contraseña no puede contener mas de 30 caracteres");
+		swal("Contraseña incorrecta");
 		document.getElementById('Clave').focus();
 		return false;
 	}
 	else if (clave.length<8){
-		swal("El campo contraseña debe contener almenos 8 caracteres");
+		swal("Contraseña incorrecta");
 		document.getElementById('Clave').focus();
 		return false;
 	}

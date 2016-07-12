@@ -4,16 +4,16 @@
 	#Author: Londoño Ochoa
 	
 	class cita{
-		function create($Id_usuario,$Id_empleado,$Fecha_cita)
+		function create($Id_centro,$Id_usuario,$Id_empleado,$Fecha_cita,$Hora)
 		{
 			//Instanciamos y hacemos conexion a la base de datos(fusion_look)
 			$conexion=fusion_look_DB::Connect();
 			$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 			//Crear el query que se llevara a cabo
-			$consulta="INSERT INTO cita(Id_usuario,Id_empleado,Fecha_cita) values (?,?,?)";
+			$consulta="INSERT INTO cita(Id_centro,Id_usuario,Id_empleado,Fecha_cita,Hora) values (?,?,?,?,?)";
 			$query=$conexion->prepare($consulta);
-			$query->execute(array($Id_usuario,$Id_empleado,$Fecha_cita));
+			$query->execute(array($Id_centro,$Id_usuario,$Id_empleado,$Fecha_cita,$Hora));
 
 			fusion_look_DB::Disconnect();
 		}

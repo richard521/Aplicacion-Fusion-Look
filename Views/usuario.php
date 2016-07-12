@@ -5,7 +5,7 @@
 	  <link rel="stylesheet" type="text/css" href="estilos/estilos_usuario.css">
 	  <!--<link rel="stylesheet" type="text/css" href="estilos/estilos_usuario.css">-->
 	  <!--Import Google Icon Font-->
-	  <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+	  <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
       <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
@@ -31,18 +31,18 @@
 		return patron.test(te);
 		}
 	  </script>-->
-	  <!--<script type="text/javascript">
+	  <script type="text/javascript">
 	  	function justNumbers(e)
         {
         var keynum = window.event ? window.event.keyCode : e.which;
         if ((keynum == 8) || (keynum == 46))
         return true;
-         
+        
         return /\d/.test(String.fromCharCode(keynum));
         }
-	  </script>-->
-	<title>Registro usuarios</title>
-  <nav class="grey darken-2">
+	  </script>
+	<title> Registro usuarios</title>
+  <nav class="grey darken-2 nav">
       <div class="nav-wrapper">
         <a href="#" class="brand-logo" style="font-size:40px;">Fusion-Look</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -66,8 +66,7 @@
 					<h3>Registro usuario nuevo</h3>
 						<article>
 							<div class="input-field col s12">
-								<input type="text" id="Tipo_usuario" name="Tipo_usuario" class="validate" value="Usuario" onkeypress="return validar(event)" readonly>
-								<label for="Tipo_usuario">Tipo de usuario</label>
+								<input type="hidden" id="Tipo_usuario" name="Tipo_usuario" class="validate" value="Usuario" onkeypress="return validar(event)">
   							</div>
 							<div class="input-field col s12">
 								<input type="text" id="Nombre" name="Nombre" class="validate" onkeypress="return validar(event)">

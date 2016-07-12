@@ -1,7 +1,7 @@
 <?php 
 	include ("../Model/usuario.class.php");
 	include ("../Model/dbconn.php");
-	$user = usuario::ReadAll();
+	$user = usuario::ReadAdm();
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,7 +10,7 @@
 	  <link rel="stylesheet" type="text/css" href="estilos/estilos_usuario.css">
 	  <!--<link rel="stylesheet" type="text/css" href="estilos/estilos_usuario.css">-->
 	  <!--Import Google Icon Font-->
-	  <link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+	  <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
       <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>

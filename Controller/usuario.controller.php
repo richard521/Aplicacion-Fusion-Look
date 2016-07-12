@@ -36,7 +36,7 @@
 				try {
 					usuario::Create($Tipo_usuario,$Nombre,$Apellido,$Clave,$Email,$Telefono,$Sexo,$Estado);
 					$mensaje="Desarrollador registrado con exito.";
-					header("Location: ../Views/indeax.php?msn=$mensaje");
+					header("Location: ../Views/pruebainicio.php?msn=$mensaje");
 				} catch (Exception $e){
 					$mensaje="Lo sentimos, ha ocurrido un error al momento de hacer el registro, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();
 					header("Location: ../Views/admins.php?msn=$mensaje");	
@@ -45,7 +45,7 @@
 			else if($Tipo_usuario=="Administrador"){
 				try {
 					usuario::Create($Tipo_usuario,$Nombre,$Apellido,$Clave,$Email,$Telefono,$Sexo,$Estado);
-					$mensaje="Administrador registrado con exito.";
+					$mensaje="Complete el paso numero 2.";
 					header("Location: ../Views/admins.php?msn=$mensaje");
 				} catch (Exception $e){
 					$mensaje="Lo sentimos, ha ocurrido un error al momento de hacer el registro, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();
@@ -56,11 +56,15 @@
 				try {
 					usuario::Create($Tipo_usuario,$Nombre,$Apellido,$Clave,$Email,$Telefono,$Sexo,$Estado);
 					$mensaje="Empleado registrado con exito.";
-					header("Location: ../Views/indeax.php?msn=$mensaje");
+					header("Location: ../Views/empleado2.php?msn=$mensaje");
 				} catch (Exception $e){
 					$mensaje="Lo sentimos, ha ocurrido un error al momento de hacer el registro, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();
 					header("Location: ../Views/admins.php?msn=$mensaje");	
 				}
+			}
+			else{
+				$mensaje="Lo sentimos a ocurrido un error.";
+				header("Location: ../Views/usuario.php?msn=$mensaje");
 			}
 			break;
 		case 'U':
@@ -107,10 +111,10 @@
 
 				if($usuario_existe == 0){
 					$mensaje="Usuario o contraseña incorrectos.";
-					$tipo_mensaje="advertencia";
+					$tipo_mensaje="error ";
 					
 
-					header("Location: ../Views/login.php?m=".$mensaje."&t".$tipo_mensaje);
+					header("Location: ../Views/login.php?m=".$mensaje."&t=".$tipo_mensaje);
 				}else{
 					#creamos variables de session
 

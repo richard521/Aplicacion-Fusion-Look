@@ -1,7 +1,10 @@
 <?php
+	session_start();
 	include ("../Model/empleado.class.php");
+	include ("../Model/centro_servicio.class.php");
 	include ("../Model/dbconn.php");
-	$empleado = empleado::ReadInner(); 
+	$empleado = empleado::ReadInner();
+	$centro = centro_servicio::ReadAll(); 
 	/*$id_us = $_SESSION["Id_usuario"];
 	$no_us = $_SESSION["Nombre"];*/
 ?>
@@ -35,7 +38,22 @@
 					<h3>Registro cita nueva</h3>
 						<article>
 							<div class="input-field col s12">
-								<input type="number" name="Id_usuario" class="validate"  required>
+								<select name="Id_centro">
+										<?php
+											foreach ($centro as $fila ) {
+												echo'<option value="'.$fila["Id_centro"].'">'.$fila["Nombre"].'</option>';
+											}
+										?>
+										
+								</select>
+								<label>Centro de servicio</label>
+							</div>
+							<div class="input-field col s12">
+								<select name="Id_usuario">
+									<?php 
+										echo '<option value="'.($_SESSION["Id_usuario"]).'">'.($_SESSION["Nombre"]).'</option>';
+									 ?>
+								</select>
 								<label for="Id_usuario">Usuario</label>
 							</div>
 							<div class="input-field col s12">
@@ -53,6 +71,10 @@
 								<input type="date" class="datepicker" name="Fecha_cita" class="validate" required>
 								<label for="Fecha_cita">Fecha</label>
 							</div>
+							<div class="input-field col s12">
+								<input type="time" name="Hora" class="validate" required>
+								<!--<label for="Hora">Hora cita</label>-->
+							</div> 
 							<br>
 								<a href="pruebahome.php" class="waves-effect waves-light btn red darken-1 left tooltipped" data-tooltip="Volver" data-position="top">Cancelar</a>
 								<button class="waves-effect waves-light  btn right cyan darken-1 tooltipped" data-tooltip="Agendar" data-position="top" name="acc" value="C">Enviar</button>
@@ -78,5 +100,6 @@
   		});
       </script>
       <script src="sweetalert/sweetalert-master/dist/sweetalert.min.js"></script>
+      
 </body>
 </html>

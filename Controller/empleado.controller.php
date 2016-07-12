@@ -1,4 +1,4 @@
-<?php
+ <?php
 	# -> Controller: empleado
 	#Author: Londoño Ochoa
 	session_start();
@@ -17,8 +17,8 @@
 			$Id_usuario 				=$_POST["Id_usuario"];
 			$Id_centro					=$_POST["Id_centro"];
 			$Id_servicio 				=$_POST["Id_servicio"];
-			$Cargo						=$_POST["Cargo"];
-			$Disponibilidad 			=$_POST["Disponibilidad"];
+			$Inicio 					=$_POST["Inicio"];
+			$Fin						=$_POST["Fin"];
 			
 			try {
 				empleado::Create($Id_usuario,$Id_centro,$Id_servicio,$Cargo,$Disponibilidad);
@@ -28,6 +28,7 @@
 			}
 			header("Location: ../Views/empleado.php?msn=$mensaje");
 			break;
+			//
 		case 'U':
 			# Update
 			# inicializar las variables que enviara el formulario y las que se guardaran en la tabla

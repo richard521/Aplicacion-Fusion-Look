@@ -71,5 +71,17 @@
 	  			 ?>
 	  		})
 	  </script>
+	  <script type="text/javascript">
+	  		$(document).ready(function()
+	  		{
+	  			<?php 
+	  				if(isset($_GET["m"]) and isset($_GET["t"]))
+	  				{
+	  					echo "swal('".$_GET["m"]."','','".$_GET["t"]."');";
+	  				}
+	  			 ?>
+	  		});
+	  </script>
+	  
 </body>
 </html>

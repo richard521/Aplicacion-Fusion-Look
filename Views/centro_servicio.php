@@ -1,10 +1,10 @@
 <?php
+	session_start();
 	include ("../Model/ciudad.class.php");
 	include ("../Model/administrador.class.php");
 	include ("../Model/dbconn.php");
 	$ciudad = ciudad::ReadAll();
 	$admin = administrador::ReadInner();
-	session_start();
 	if(!isset($_SESSION["Id_usuario"])){
 		$mensaje=("Debes iniciar sesion primero");
 		$tipo_mensaje=("advertencia");
