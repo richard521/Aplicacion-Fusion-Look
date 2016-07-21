@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="Views/estilos/estilos_index.css">
   <!--Import Google Icon Font-->
   <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>

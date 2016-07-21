@@ -14,7 +14,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="estilos/estilos_index.css">
+    <title>Gestion de citas</title>
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.css">
     <!--Import Google Icon Font-->
 	  <!--<link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>-->
@@ -28,7 +30,9 @@
       <!--datatable-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>
-
+       <nav class="grey darken-2">
+    <?php include_once("../Model/menu.php"); ?>
+  </nav>
       <script>
     	$(document).ready( function () {
       	$('#datatable').DataTable();
@@ -44,6 +48,7 @@
           <th>Usuario</th>
           <th>Empleado</th>
           <th>Fecha</th>
+          <th>Hora</th>
           <th>Acciones</th>
         </tr>
       </thead>
@@ -57,10 +62,11 @@
                 <td>".$row["Id_usuario"]."</td>
                 <td>".$row["Id_empleado"]."</td>
                 <td>".$row["Fecha_cita"]."</td>
+                <td>".$row["hora"]."</td>
                 <td>
 
-                  <a href='editarcita.php?cii=".($row["Id_cita"])."'><i class='small material-icons'>mode_edit</i></a>
-                  <a href='../Controller/cita.controller.php?cii=".($row["Id_cita"])."&acc=D'><i class='small material-icons'>delete</i></a>
+                  <a href='editarcita.php?cii=".($row["Id_cita"])."'><i class='small material-icons' style='color: #757575'>mode_edit</i></a>
+                  <a href='../Controller/cita.controller.php?cii=".($row["Id_cita"])."&acc=D'><i class='small material-icons' style='color: #757575'>delete</i></a>
 
 
                 </td>
@@ -69,5 +75,14 @@
          ?>
         </tbody>
     </table>
+
+      <script type="text/javascript" src="materialize/js/materialize.js"></script>
+      <script type="text/javascript">
+      $(document).ready(function() {
+      $('select').material_select();
+      });
+      </script>
+      <script src="sweetalert/sweetalert-master/dist/sweetalert.min.js"></script>
   </body>
+
 </html>

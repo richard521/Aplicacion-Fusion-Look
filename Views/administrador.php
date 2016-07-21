@@ -5,6 +5,7 @@
 <html>
 <head>
 	  <meta charset="utf-8">
+	  <link rel="stylesheet" type="text/css" href="estilos/estilos_index.css">
 	  <link rel="stylesheet" type="text/css" href="estilos/estilos_usuario.css">
 	  <!--<link rel="stylesheet" type="text/css" href="estilos/estilos_usuario.css">-->
 	  <!--Import Google Icon Font-->
@@ -34,7 +35,7 @@
 		return patron.test(te);
 		}
 	  </script>-->
-	  <!--<script type="text/javascript">
+	  <script type="text/javascript">
 	  	function justNumbers(e)
         {
         var keynum = window.event ? window.event.keyCode : e.which;
@@ -43,7 +44,7 @@
          
         return /\d/.test(String.fromCharCode(keynum));
         }
-	  </script>-->
+	  </script>
 	<title>Registro administradores</title>
   <nav class="grey darken-2">
   	<?php include_once("../Model/menu.php"); ?>

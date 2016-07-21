@@ -12,9 +12,11 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	  <link rel="stylesheet" type="text/css" href="estilos/estilos_index.css">
 	<link rel="stylesheet" type="text/css" href="estilos/estilos_usuario.css">
 	  <!--<link rel="stylesheet" type="text/css" href="estilos/estilos_usuario.css">-->
 	  <!--Import Google Icon Font-->
+	  <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
       <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
@@ -22,12 +24,8 @@
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<title>Registro cita</title>
-  <nav class="grey darken-1">
-    <div class="nav-wrapper">
-      <a href="pruebahome.php" class="brand-logo" id="titulo">Fusion-Look</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-      </ul>
-    </div>
+  <nav class="grey darken-2">
+  	<?php include_once("../Model/menu.php"); ?>
   </nav>
 </head>
 <body>
@@ -72,7 +70,7 @@
 								<label for="Fecha_cita">Fecha</label>
 							</div>
 							<div class="input-field col s12">
-								<input type="time" name="Hora" class="validate" required>
+								<input type="time" name="hora" class="validate" required>
 								<!--<label for="Hora">Hora cita</label>-->
 							</div> 
 							<br>

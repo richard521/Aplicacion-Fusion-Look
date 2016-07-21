@@ -7,9 +7,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="estilos/estilos_index.css">
 	<link rel="stylesheet" type="text/css" href="estilos/estilos_usuario.css">
 	  <!--<link rel="stylesheet" type="text/css" href="estilos/estilos_usuario.css">-->
 	  <!--Import Google Icon Font-->
+	  <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
       <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
@@ -45,12 +48,11 @@
 								<input type="text" name="Nombre" class="validate" length="10" required>
 								<label for="Nombre">Nombre ciudad</label>
 							</div>
-							<a href="pruebahome.php" class="waves-effect waves-light btn red darken-1 left tooltipped" data-tooltip="Volver" data-position="top">Cancelar</a>
+							<a href="<?=$_SERVER['HTTP_REFERER'] ?>" class="waves-effect waves-light btn red darken-1 left tooltipped" data-tooltip="Volver" data-position="top">Cancelar</a>
 							<button class="waves-effect waves-light  btn right cyan darken-1 tooltipped" data-tooltip="Crear" data-position="top" name="acc" value="C">Enviar</button>
 						</article>
 				
 			</form>
-			<?php echo @$_GET["msn"]; ?>
 		</div>
 	</section>
 		

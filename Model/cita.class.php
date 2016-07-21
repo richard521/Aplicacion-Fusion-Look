@@ -11,7 +11,7 @@
 			$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 			//Crear el query que se llevara a cabo
-			$consulta="INSERT INTO cita(Id_centro,Id_usuario,Id_empleado,Fecha_cita,Hora) values (?,?,?,?,?)";
+			$consulta="INSERT INTO cita(Id_centro,Id_usuario,Id_empleado,Fecha_cita,hora) values (?,?,?,?,?)";
 			$query=$conexion->prepare($consulta);
 			$query->execute(array($Id_centro,$Id_usuario,$Id_empleado,$Fecha_cita,$Hora));
 
@@ -56,16 +56,16 @@
 
 			fusion_look_DB::Disconnect();
 		}
-		function Update($Id_empleado,$Fecha_cita,$Id_cita,$Id_usuario)
+		function Update($Id_empleado,$Fecha_cita,$Id_cita,$Id_usuario,$Hora)
 		{
 			//Instanciamos y hacemos conexion a la base de datos(fusion_look)
 			$conexion=fusion_look_DB::connect();
 			$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 			//Crear el query que se llevara a cabo
-			$consulta="UPDATE cita SET Id_usuario=?,Id_empleado=?,Fecha_cita=? WHERE Id_cita=?";
+			$consulta="UPDATE cita SET Id_usuario=?,Id_empleado=?,Fecha_cita=?,hora=? WHERE Id_cita=?";
 			$query=$conexion->prepare($consulta);
-			$query->execute(array($Id_empleado,$Fecha_cita,$Id_cita,$Id_usuario));
+			$query->execute(array($Id_empleado,$Fecha_cita,$Id_cita,$Id_usuario,$Hora));
 
 			fusion_look_DB::Disconnect();
 		}

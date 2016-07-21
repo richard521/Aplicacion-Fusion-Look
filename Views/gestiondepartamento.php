@@ -20,6 +20,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="estilos/estilos_index.css">
     <title></title>
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.css">
     <!--Import Google Icon Font-->
@@ -54,7 +55,7 @@
         <tr>
           <th>Codigo</th>
           <th>Nombre</th>
-          <!--<th>Acciones</th>-->
+          <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
@@ -65,7 +66,13 @@
       echo "<tr>
                 <td>".$row["Id_departamento"]."</td>
                 <td>".$row["Nombre"]."</td>
-                
+                <td>
+
+                  <a href='editardepartamento.php?di=".($row["Id_departamento"])."'><i class='small material-icons' style='color: #757575'>mode_edit</i></a>
+                  <a href='../Controller/departamento.controller.php?di=".($row["Id_departamento"])."&acc=D'><i class='small material-icons' style='color: #757575'>delete</i></a>
+
+
+                </td>
               </tr>";
           }
          ?>

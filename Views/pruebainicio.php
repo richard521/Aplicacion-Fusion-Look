@@ -12,6 +12,7 @@
 <html>
 	<head>
 	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="estilos/estilos_index.css">
 	<link rel="stylesheet" type="text/css" href="estilos/estilos_login.css">
 	  	<!--Import Google Icon Font-->
 	  	<link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>

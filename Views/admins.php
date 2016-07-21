@@ -7,6 +7,7 @@
 <html>
 <head>
 	  <meta charset="utf-8">
+	  <link rel="stylesheet" type="text/css" href="estilos/estilos_index.css">
 	  <link rel="stylesheet" type="text/css" href="estilos/estilos_usuario.css">
 	  <!--<link rel="stylesheet" type="text/css" href="estilos/estilos_usuario.css">-->
 	  <!--Import Google Icon Font-->
@@ -93,6 +94,17 @@
 	  	$(document).ready(function() {
     	$('select').material_select();
   		});
+	  </script>
+	  <script type="text/javascript">
+	  		$(document).ready(function()
+	  		{
+	  			<?php 
+	  				if(isset($_GET["msn"]) and isset($_GET["t"]))
+	  				{
+	  					echo "swal('".$_GET["msn"]."','','".$_GET["t"]."');";
+	  				}
+	  			 ?>
+	  		});
 	  </script>
 </body>
 </html>

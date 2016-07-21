@@ -2,6 +2,7 @@
 <html>  
 <head>
 	  <meta charset="utf-8">
+	  <link rel="stylesheet" type="text/css" href="estilos/estilos_index.css">
 	  <link rel="stylesheet" type="text/css" href="estilos/estilos_usuario.css">
 	  <!--<link rel="stylesheet" type="text/css" href="estilos/estilos_usuario.css">-->
 	  <!--Import Google Icon Font-->
@@ -42,14 +43,14 @@
         }
 	  </script>
 	<title> Registro usuarios</title>
-  <nav class="grey darken-2 nav">
+  <nav class="grey darken-2">
       <div class="nav-wrapper">
         <a href="#" class="brand-logo" style="font-size:40px;">Fusion-Look</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="../index.php#q" class="iniciar">Quienes somos</a></li>
+          <li><a href="../index.php#q" class="iniciar">Quiénes somos</a></li>
           <li><a href="../index.php#a" class="iniciar">Administradores</a></li>
-          <li><a href="../index.php#g" class="iniciar">Geolocalizacion</a></li>
+          <li><a href="../index.php#g" class="iniciar">Geolocalización</a></li>
           <li><a href="login.php" class="iniciar">Iniciar sesión</a></li>
         </ul>
         <ul class="side-nav" id="mobile-demo">
@@ -86,7 +87,7 @@
 							</div>
 							<div class="input-field col s12">
 								<input type="text" id="Telefono" name="Telefono" class="validate" onkeypress="return justNumbers(event);">
-								<label for="Telefono">Telefono</label>
+								<label for="Telefono">Telefono(Celular)</label>
 							</div>
 							<div class="input-field col s12">
 								<h5>Sexo</h5>

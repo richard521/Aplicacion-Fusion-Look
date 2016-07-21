@@ -9,12 +9,14 @@
 	}
   require_once("../Model/dbconn.php");
 	require_once("../Model/ciudad.class.php");
+  
 ?>
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <link rel="stylesheet" type="text/css" href="estilos/estilos_index.css">
+    <title>Gestion ciudad</title>
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.css">
     <!--Import Google Icon Font-->
 	  <!--<link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>-->
@@ -67,7 +69,7 @@
                 <td>
 
                   <a href='editarciudad.php?cui=".($row["Id_ciudad"])."'><i class='small material-icons' style='color: #757575'>mode_edit</i></a>
-                  <a href='../Controller/ciudad.controller.php?ui=".($row["Id_ciudad"])."&acc=D'><i class='small material-icons' style='color: #757575'>delete</i></a>
+                  <a href='../Controller/ciudad.controller.php?cui=".($row["Id_ciudad"])."&acc=D'><i class='small material-icons' style='color: #757575'>delete</i></a>
 
 
                 </td>

@@ -19,19 +19,22 @@
 			try{
 				ciudad::Create($Id_departamento,$Nombre);
 				$mensaje="Ciudad registrada con exito.";
+				$tipo_mensaje="success";
+				header("Location: ../Views/pruebainicio.php?msn=$mensaje&t=$tipo_mensaje");
 			}catch(Exception $e){
 				$mensaje="Lo sentimos, ha ocurrido un error al momento de hacer el registro, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();
 			}
 			break;
 		case 'U':
-			# Update
-			# inicializamos las variables que enviara el formulario y las que se guardaran en la tabla
+			# Update			# inicializamos las variables que enviara el formulario y las que se guardaran en la tabla
 			$Id_ciudad				=$_POST["Id_ciudad"];
 			$Id_departamento 		=$_POST["Id_departamento"];
 			$Nombre 				=$_POST["Nombre"];
 			try{
 				ciudad::Update($Id_departamento,$Nombre,$Id_ciudad);
 				$mensaje="Ciudad actualizada con exito.";
+				$tipo_mensaje="success";
+				header("Location: ../Views/pruebainicio.php?msn=$mensaje&t=$tipo_mensaje");
 			}catch(Exception $e){
 				$mensaje="Lo sentimos, ha ocurrido un error al momento de actualizar la ciudad, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();
 			}
@@ -40,12 +43,13 @@
 			# Delete
 			# inicializamos las variables que enviara el formulario y las que se guardaran en la tabla
 			try{
-				$ciudad = ciudad::Delete($Id_ciudad,$Id_departamento,$Nombre);
+				$ciudad = ciudad::Delete($_REQUEST["cui"]);
 				$mensaje="Ciudad eliminada con exito.(Esta accion es irreversible)";
+				$tipo_mensaje="success";
+				header("Location: ../Views/pruebainicio.php?msn=$mensaje&t=$tipo_mensaje");
 			}catch(Exception $e){
 				$mensaje="Lo sentimos, ha ocurrido un error al momento de eliminar la ciudad, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();
 			}
 			break;
 	}
-	header("Location: ../Views/ciudad.php?msn=$mensaje");
 ?>

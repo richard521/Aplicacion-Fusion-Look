@@ -19,10 +19,12 @@
 				try {
 					administrador::Create($Id_usuario);
 					$mensaje="Administrador registrado con exito.";
-					header("Location: ../Views/pruebainicio.php?msn=$mensaje");
+					$tipo_mensaje="success";
+					header("Location: ../Views/pruebainicio.php?msn=".$mensaje."&t".$tipo_mensaje);
 				} catch (Exception $e){
 					$mensaje="Lo sentimos, ha ocurrido un error al momento de hacer el registro, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();
-					header("Location: ../Views/administrador.php?msn=$mensaje");	
+					$tipo_mensaje="error";
+					header("Location: ../Views/administrador.php?msn=".$mensaje."&t".$tipo_mensaje);	
 				}
 			break;
 		case 'U':
@@ -39,11 +41,11 @@
 			try {
 				usuario::Update($Nombre,$Apellido,$Clave,$Email,$Telefono,$Sexo,$Estado,$Id_usuario);
 				$mensaje="Usuario actualizado con exito.";
-				header("Location: ../Views/gestion.php?msn=$mensaje");
+				$tipo_mensaje="success";
+				header("Location: ../Views/gestion.php?msn=".$mensaje."&t".$tipo_mensaje);
 			} catch (Exception $e){
 				$mensaje="Lo sentimos, ha ocurrido un error al momento de actualizar el usuario, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();	
 			}
-			echo $mensaje;
 			break;
 		case 'D':
 			# Delete

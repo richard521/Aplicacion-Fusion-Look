@@ -9,6 +9,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="utf-8">
+	  <link rel="stylesheet" type="text/css" href="estilos/estilos_index.css">
 	<link rel="stylesheet" type="text/css" href="estilos/estilos_usuario.css">
 	  <!--<link rel="stylesheet" type="text/css" href="estilos/estilos_usuario.css">-->
 	  <!--Import Google Icon Font-->

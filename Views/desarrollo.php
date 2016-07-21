@@ -18,6 +18,7 @@
 <html>
 <head>
 	  <meta charset="utf-8">
+	  <link rel="stylesheet" type="text/css" href="estilos/estilos_index.css">
 	  <link rel="stylesheet" type="text/css" href="estilos/estilos_usuario.css">
 	  <!--<link rel="stylesheet" type="text/css" href="estilos/estilos_usuario.css">-->
 	  <!--Import Google Icon Font-->
@@ -121,9 +122,9 @@
 										<label for="inactivo">Inactivo</label>
 									</p>
 								<br>
-								<a href="<?=$_SERVER['HTTP_REFERER'] ?>" class="waves-effect waves-light btn left tooltipped red accent-2
+								<a href="<?=$_SERVER['HTTP_REFERER'] ?>" class="waves-effect waves-light btn left tooltipped red darken-1
 " data-tooltip="Volver" data-position="top">Cancelar</a>
-								<button class="waves-effect waves-light  btn right  blue accent-2" name="acc" value="C" onclick="return valida()">Enviar</button>
+								<button class="waves-effect waves-light  btn right  cyan darken-1" name="acc" value="C" onclick="return valida()">Enviar</button>
 							</div>
 						</article>
 				

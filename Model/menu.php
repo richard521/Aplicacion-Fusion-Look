@@ -18,14 +18,17 @@
             <li><a href="cita.php"style="color: white;">Agendar cita</a></li>
             <li><a href="gestioncita.php"style="color: white;">Mis citas</a></li>
         </ul>
+        <ul id="perfil" class="dropdown-content grey darken-1"style="margin-top: 64px;">
+            <li><a href="#"style="color: white;"><?php echo($_SESSION["Tipo_usuario"]).": ".($_SESSION["Nombre"])." "?></a></li>
+            <li><a href="editarusuario.php"style="color: white;">Modificar</a></li>
+        </ul>
             <a href="#" class="brand-logo">Fusion-Look</a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
-              <li><a class="dropdown-button" href="#!"><?php echo($_SESSION["Tipo_usuario"]).": ".($_SESSION["Nombre"])." ".($_SESSION["Apellido"]) ?></a></li>
-              <li><a href="#">Inicio</a></li>
+              <li><a href="pruebainicio.php">Inicio</a></li>
               <li><a href="#" class="dropdown-button" data-activates="centros">Centros de servicio</a></li>
               <li><a href="#" class="dropdown-button" data-activates="cita">Mis Citas</a></li>
-              <li><a href="#">Mi perfil</a></li>
+              <li><a href="#" class="dropdown-button" data-activates="perfil">Mi perfil</a></li>
               <li><a href="../Model/cerrarsesion.php">Cerrar sesion</a></li>
             </ul>
             <!--<ul class="side-nav" id="mobile-demo">
@@ -59,13 +62,19 @@
             <li><a href="tipo_servicio.php"style="color: white;">Crear</a></li>
             <li><a href="#"style="color: white;">Consultar</a></li>
         </ul>
+        <ul id="perfil" class="dropdown-content grey darken-1"style="margin-top: 64px;">
+            <li><a href="#"style="color: white;"><?php echo($_SESSION["Tipo_usuario"]).": ".($_SESSION["Nombre"])." "?></a></li>
+            <li><a href="editarusuario.php"style="color: white;">Modificar</a></li>
+        </ul>
             <a href="#" class="brand-logo">Fusion-Look</a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
-              <li><a class="dropdown-button" href="#!"><?php echo($_SESSION["Tipo_usuario"]).": ".($_SESSION["Nombre"])." ".($_SESSION["Apellido"]) ?></a></li>
               <li><a href="#" class="dropdown-button" data-activates="centros">Centros de servicio</a></li>
               <li><a href="#" class="dropdown-button" data-activates="empleados">Empleados</a></li>
               <li><a href="gestioncita.php">Citas</a></li>
+              <!--<li><a href="servicio.php">Servicios</a></li>
+              <li><a href="tipo_servicio.php">Tipos de servicio</a></li>-->
+              <li><a href="#" class="dropdown-button" data-activates="perfil">Mi perfil</a></li>
               <li><a href="../Model/cerrarsesion.php">Cerrar sesion</a></li>
             </ul>
             <!--<ul class="side-nav" id="mobile-demo">
@@ -103,15 +112,19 @@
             <li><a href="ciudad.php" style="color: white;">Crear</a></li>
             <li><a href="gestionciudad.php" style="color: white;">Gestionar</a></li>
         </ul>
+        <ul id="perfil" class="dropdown-content grey darken-1"style="margin-top: 64px;">
+            <li><a href="#"style="color: white;"><?php echo($_SESSION["Tipo_usuario"]).": ".($_SESSION["Nombre"])." "?></a></li>
+            <li><a href="editarusuario.php"style="color: white;">Modificar</a></li>
+        </ul>
             <a href="pruebainicio.php" class="brand-logo">Fusion-Look</a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
-              <li><a class="dropdown-button" href="#!"><?php echo($_SESSION["Tipo_usuario"]).": ".($_SESSION["Nombre"])." ".($_SESSION["Apellido"]) ?></a></li>
               <li><a href="#" class="dropdown-button" data-activates="desarrollo">Desarrolladores</a></li>
               <li><a href="#" class="dropdown-button" data-activates="admins">Administradores</a></li>
               <li><a href="#" class="dropdown-button" data-activates="users">Usuarios</a></li>
               <li><a href="#" class="dropdown-button" data-activates="departamentos">Departamentos</a></li>
               <li><a href="#" class="dropdown-button" data-activates="ciudades">Ciudades</a></li>
+              <li><a href="#" class="dropdown-button" data-activates="perfil">Mi perfil</a></li>
               <li><a href="../Model/cerrarsesion.php">Cerrar sesión</a></li>
             </ul>
             <!--<ul class="side-nav" id="mobile-demo">

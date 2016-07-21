@@ -20,10 +20,12 @@
 			try {
 				tipo_servicio::Create($Nombre);
 				$mensaje="Tipo de servicio creado con exito.";
+				$tipo_mensaje="success";
+				header("Location: ../Views/pruebainicio.php?msn=$mensaje&t=$tipo_mensaje");
 			} catch (Exception $e){
 				$mensaje="Lo sentimos, ha ocurrido un error al momento de hacer el registro, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();	
 			}
-			header("Location: ../Views/pruebainicio.php?msn=$mensaje");
+			
 			break;
 		case 'U':
 			# Update

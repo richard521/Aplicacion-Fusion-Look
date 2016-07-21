@@ -21,12 +21,13 @@
 			$Fin						=$_POST["Fin"];
 			
 			try {
-				empleado::Create($Id_usuario,$Id_centro,$Id_servicio,$Cargo,$Disponibilidad);
+				empleado::Create($Id_usuario,$Id_centro,$Id_servicio,$Inicio,$Fin);
 				$mensaje="Empleado creado con exito.";
+				$tipo_mensaje="success";
 			} catch (Exception $e){
 				$mensaje="Lo sentimos, ha ocurrido un error al momento de hacer el registro, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();	
 			}
-			header("Location: ../Views/empleado.php?msn=$mensaje");
+			header("Location: ../Views/pruebainicio.php?msn=$mensaje&t=$tipo_mensaje");
 			break;
 			//
 		case 'U':

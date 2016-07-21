@@ -7,11 +7,7 @@ function valida(){
 	telefono = document.getElementById('Telefono').value;
 	expresion = /\w+@\w+\.+[a-z]/;
 
-	if (tipo === "" && nombre ==="" && apellido ===""  && clave ==="" && email ===""  && telefono ==="") {
-		swal("Todos los campos son obligatorios")
-		return false;
-	}
-	else if (nombre === ""){
+	if (nombre === ""){
 		swal({
 			title: "",
 			text:"El campo nombre es obligatorio",
@@ -21,72 +17,120 @@ function valida(){
 		return false;
 	}
 	else if (nombre.length>30){
-		swal("El campo nombre no puede contener mas de 30 caracteres");
+		swal({
+			title: "",
+			text:"El campo nombre no puede contener mas de 30 caracteres",
+			type: "info",
+		});
 		document.getElementById('Nombre').focus();
 		return false;
 	}
 	else if (nombre.length<3){
-		swal("El campo nombre no puede contener menos de 3 caracteres");
+		swal({
+			title: "",
+			text:"El campo nombre no puede contener menos de 3 caracteres",
+			type: "info",
+		});
 		document.getElementById('Nombre').focus();
 		return false;
 	}
 	else if (apellido === ""){
-		swal("El campo apellido es obligatorio");
+		swal({
+			title: "",
+			text:"El campo apellido es obligatorio",
+			type: "info",
+		});
 		document.getElementById('Apellido').focus();
 		return false;
 	}
-	else if (apellido.length>20){
-		swal("El campo apellido no puede contener mas de 20 caracteres");
+	else if (apellido.length>50){
+		swal({
+			title: "",
+			text:"El campo apellido no puede contener mas de 50 caracteres",
+			type: "info",
+		});
 		document.getElementById('Apellido').focus();
 		return false;
 	}
 	else if (apellido.length<3){
-		swal("El campo apellido no puede contener menos de 3 caracteres");
+		swal({
+			title: "",
+			text:"El campo apellido no puede contener menos de 3 caracteres",
+			type: "info",
+		});
 		document.getElementById('Apellido').focus();
 		return false;
 	}
 	else if (clave === ""){
-		swal("El campo contraseña es obligatorio");
+		swal({
+			title: "",
+			text:"El campo contraseña es obligatorio",
+			type: "info",
+		});
 		document.getElementById('Clave').focus();
 		return false;
 	}
 	else if (clave.length>30){
-		swal("El campo contraseña no puede contener mas de 30 caracteres");
+		swal({
+			title: "",
+			text:"El campo contraseña no puede contener mas de 30 caracteres",
+			type: "info",
+		});
 		document.getElementById('Clave').focus();
 		return false;
 	}
 	else if (clave.length<8){
-		swal("El campo contraseña debe contener almenos 8 caracteres");
+		swal({
+			title: "",
+			text:"El campo contraseña debe contener almenos 8 caracteres",
+			type: "info",
+		});
 		document.getElementById('Clave').focus();
 		return false;
 	}
 	else if (email === ""){
-		swal("El campo email es obligatorio");
+		swal({
+			title: "",
+			text:"El campo email es obligatorio",
+			type: "info",
+		});
 		document.getElementById('Email').focus();
 		return false;
 	}
 	else if (!expresion.test(email)){
-		swal("Por favor ingrese un correo valido");
+		swal({
+			title: "",
+			text:"Por favor ingrese un correo valido. Ejemplo (fusion@look.com) ",
+			type: "info",
+		});
 		document.getElementById('Email').focus();
 		return false;
 	}
 	else if (telefono === ""){
-		swal("El campo telefono es obligatorio");
+		swal({
+			title: "",
+			text:"El campo telefono es obligatorio",
+			type: "info",
+		});
 		document.getElementById('Telefono').focus();
 		return false;
 	}
 	else if (telefono.length>20){
-		swal("El campo telefono no puede contener mas de 20 caracteres");
+		swal({
+			title: "",
+			text:"El campo telefono no puede contener mas de 20 caracteres",
+			type: "info",
+		});
 		document.getElementById('Telefono').focus();
 		return false;
 	}
 	else if (telefono.length<7){
-		swal("El campo telefono no puede contener menos de 7 caracteres");
+		swal({
+			title: "",
+			text:"El campo telefono no puede contener menos de 7 caracteres",
+			type: "info",
+		});
 		document.getElementById('Telefono').focus();
 		return false;
-	}
-	else if(isNaN(telefono)){
-		swal('El telefono ingresado no es un numero')
-		return false;
-	}
+ 	}
 }

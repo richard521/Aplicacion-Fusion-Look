@@ -26,45 +26,54 @@
 				try {
 					usuario::Create($Tipo_usuario,$Nombre,$Apellido,$Clave,$Email,$Telefono,$Sexo,$Estado);
 					$mensaje="Usuario registrado con exito.";
-					header("Location: ../Views/login.php?msn=".$mensaje);
+					$tipo_mensaje="success";
+					header("Location: ../Views/login.php?msn=$mensaje&t=$tipo_mensaje");
 				} catch (Exception $e){
 					$mensaje="Lo sentimos, ha ocurrido un error al momento de hacer el registro, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();
-					header("Location: ../Views/usuario.php?msn=$mensaje");	
+					$tipo_mensaje="error";
+					header("Location: ../Views/usuario.php?msn=$mensaje&t=$tipo_mensaje");	
 				}
 			}
 			else if($Tipo_usuario=="Desarrollador"){
 				try {
 					usuario::Create($Tipo_usuario,$Nombre,$Apellido,$Clave,$Email,$Telefono,$Sexo,$Estado);
 					$mensaje="Desarrollador registrado con exito.";
-					header("Location: ../Views/pruebainicio.php?msn=$mensaje");
+					$tipo_mensaje="success";
+					header("Location: ../Views/pruebainicio.php?msn=$mensaje&t=$tipo_mensaje");
 				} catch (Exception $e){
 					$mensaje="Lo sentimos, ha ocurrido un error al momento de hacer el registro, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();
-					header("Location: ../Views/admins.php?msn=$mensaje");	
+					$tipo_mensaje="error";
+					header("Location: ../Views/admins.php?msn=$mensaje&t=$tipo_mensaje");	
 				}
 			}
 			else if($Tipo_usuario=="Administrador"){
 				try {
 					usuario::Create($Tipo_usuario,$Nombre,$Apellido,$Clave,$Email,$Telefono,$Sexo,$Estado);
 					$mensaje="Complete el paso numero 2.";
-					header("Location: ../Views/admins.php?msn=$mensaje");
+					$tipo_mensaje="success";
+					header("Location: ../Views/admins.php?msn=$mensaje&t=$tipo_mensaje");
 				} catch (Exception $e){
 					$mensaje="Lo sentimos, ha ocurrido un error al momento de hacer el registro, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();
-					header("Location: ../Views/admins.php?msn=$mensaje");	
+					$tipo_mensaje="error";
+					header("Location: ../Views/admins.php?msn=$mensaje&t=$tipo_mensaje");	
 				}
 			}
 			else if($Tipo_usuario=="Empleado"){
 				try {
 					usuario::Create($Tipo_usuario,$Nombre,$Apellido,$Clave,$Email,$Telefono,$Sexo,$Estado);
 					$mensaje="Empleado registrado con exito.";
-					header("Location: ../Views/empleado2.php?msn=$mensaje");
+					$tipo_mensaje="success";
+					header("Location: ../Views/empleado2.php?msn=$mensaje&t=$tipo_mensaje");
 				} catch (Exception $e){
 					$mensaje="Lo sentimos, ha ocurrido un error al momento de hacer el registro, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();
-					header("Location: ../Views/admins.php?msn=$mensaje");	
+					$tipo_mensaje="error";
+					header("Location: ../Views/admins.php?msn=$mensaje&t=$tipo_mensaje");	
 				}
 			}
 			else{
 				$mensaje="Lo sentimos a ocurrido un error.";
-				header("Location: ../Views/usuario.php?msn=$mensaje");
+				$tipo_mensaje="error";
+				header("Location: ../Views/usuario.php?msn=$mensaje&t=$tipo_mensaje");
 			}
 			break;
 		case 'U':
@@ -80,12 +89,14 @@
 			$Estado					=$_POST["Estado"];
 			try {
 				usuario::Update($Nombre,$Apellido,$Clave,$Email,$Telefono,$Sexo,$Estado,$Id_usuario);
-				$mensaje="Usuario actualizado con exito.";
-				header("Location: ../Views/gestion.php?msn=$mensaje");
+				$mensaje="Perfil actualizado con exito.";
+				$tipo_mensaje="success";
+				header("Location: ../Views/pruebainicio.php?msn=$mensaje&t=$tipo_mensaje");
 			} catch (Exception $e){
 				$mensaje="Lo sentimos, ha ocurrido un error al momento de actualizar el usuario, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();	
+				$tipo_mensaje="error";	
+				header("Location: ../Views/editarusuario.php?msn=$mensaje&t=$tipo_mensaje");	
 			}
-			echo $mensaje;
 			break;
 		case 'D':
 			# Delete
@@ -93,8 +104,11 @@
 			try {
 				$usuario = usuario::Delete($_REQUEST["ui"]);
 				$mensaje="Usuario eliminado con exito.(Esta accion es irreversible)";
+				$tipo_mensaje="success";
+				header("Location: ../Views/pruebainicio.php?msn=$mensaje&t=$tipo_mensaje");
 			} catch (Exception $e){
 				$mensaje="Lo sentimos, ha ocurrido un error al momento de eliminar el usuario, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();	
+				$tipo_mensaje="error";
 			}
 			break;
 		case 'L':

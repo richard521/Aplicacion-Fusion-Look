@@ -19,10 +19,11 @@
 			try {
 				departamento::Create($Nombre);
 				$mensaje="Departamento creado con exito.";
+				$tipo_mensaje="success";
+				header("Location: ../Views/pruebainicio.php?msn=$mensaje&t=$tipo_mensaje");
 			} catch (Exception $e){
 				$mensaje="Lo sentimos, ha ocurrido un error al momento de hacer el registro, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();	
 			}
-			header("Location: ../Views/departamento.php?msn=$mensaje");
 			break;
 		case 'U':
 			# Update
@@ -31,20 +32,24 @@
 			try {
 				departamento::Update($Nombre);
 				$mensaje="Departamento actualizado con exito.";
+				$tipo_mensaje="success";
+				header("Location: ../Views/pruebainicio.php?msn=$mensaje&t=$tipo_mensaje");
 			} catch (Exception $e){
 				$mensaje="Lo sentimos, ha ocurrido un error al momento de actualizar el departamento, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();	
+				$tipo_mensaje="error";
+				header("Location: ../Views/pruebainicio.php?msn=$mensaje&t=$tipo_mensaje");
 			}
 			break;
 		case 'D':
 			# Delete
-			# inicializar las variables que enviara el formulario y las que se guardaran en la tabla
-			$Id_departamento			=$_POST["Id_departamento"];
-
-			try {
-				departamento::Delete($Id_departamento,$Nombre);
+			# inicializamos las variables que enviara el formulario y las que se guardaran en la tabla
+			try{
+				$depar = departamento::Delete($_REQUEST["di"]);
 				$mensaje="Departamento eliminado con exito.(Esta accion es irreversible)";
-			} catch (Exception $e){
-				$mensaje="Lo sentimos, ha ocurrido un error al momento de eliminar el departamento, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();	
+				$tipo_mensaje="success";
+				header("Location: ../Views/pruebainicio.php?msn=$mensaje&t=$tipo_mensaje");
+			}catch(Exception $e){
+				$mensaje="Lo sentimos, ha ocurrido un error al momento de eliminar la ciudad, ruta error: ".$e->getMessage().", ".$e->getFile().", ".$e->getLine();
 			}
 			break;
 		
